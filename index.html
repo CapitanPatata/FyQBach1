@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrenador Extensivo Máximo: Oxisales y Oxoaniones</title>
+    <title>Web FyQ Reyes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -14,7 +14,7 @@
         <div class="max-w-3xl mx-auto flex justify-between items-center">
             <div>
                 <h1 class="text-xl font-extrabold text-teal-400">Entrenador Extensivo Máximo</h1>
-                <p class="text-xs text-slate-400">Base de datos masiva de Oxisales y Oxoaniones</p>
+                <p class="text-xs text-slate-400">Base de datos masiva de Oxisales y Oxoaniones[cite: 3]</p>
             </div>
             <div class="flex items-center space-x-6">
                 <div class="text-right">
@@ -34,7 +34,7 @@
         <!-- Menú Principal -->
         <div id="mainMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6">
             <h2 class="text-2xl font-bold text-teal-400">Menú Principal</h2>
-            <p class="text-sm text-slate-400">Selecciona el trimestre:</p>
+            <p class="text-sm text-slate-400">Selecciona el trimestre[cite: 3]:</p>
             <div class="space-y-4 pt-2">
                 <button onclick="showScreen('trimestre1Menu')" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     1er Trimestre
@@ -64,7 +64,7 @@
         <!-- Pantalla para 2do y 3er Trimestre (Solo botón volver) -->
         <div id="emptyTrimestreScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
             <h2 id="emptyTitle" class="text-2xl font-bold text-teal-400">Trimestre</h2>
-            <p class="text-sm text-slate-400">Contenido no disponible todavía.</p>
+            <p class="text-sm text-slate-400">Contenido no disponible todavía[cite: 3].</p>
             <div class="pt-2">
                 <button onclick="showScreen('mainMenu')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Volver
@@ -74,8 +74,8 @@
 
         <!-- Menú Original del Código (Tema 1) -->
         <div id="menuScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
-            <h2 class="text-2xl font-bold text-teal-400">Tema 1: Oxisales y Oxoaniones</h2>
-            <p class="text-sm text-slate-400">Selecciona el modo de práctica deseado:</p>
+            <h2 class="text-2xl font-bold text-teal-400">Tema 1: Oxisales y Oxoaniones[cite: 3]</h2>
+            <p class="text-sm text-slate-400">Selecciona el modo de práctica deseado[cite: 3]:</p>
             <div class="space-y-4 pt-2">
                 <button onclick="startPractice(1)" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Escribir Nombres
@@ -114,12 +114,12 @@
 
             <div id="formMode1" class="space-y-3 my-6">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura Tradicional / Stock:</label>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura Tradicional / Stock[cite: 3]:</label>
                     <input type="text" id="inputTrad" placeholder="Ej: sulfato de hierro / hipoyodito de sodio" autocomplete="off" spellcheck="false"
                         class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-teal-400 text-slate-100 transition">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura IUPAC / Sistema:</label>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura IUPAC / Sistema[cite: 3]:</label>
                     <input type="text" id="inputIupac" placeholder="Ej: tetraoxidosulfato de hierro" autocomplete="off" spellcheck="false"
                         class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-teal-400 text-slate-100 transition">
                 </div>
@@ -150,12 +150,12 @@
     </main>
 
     <footer class="text-center py-4 text-xs text-slate-500">
-        Entrenador Extensivo Máximo • Base de datos de Oxisales y Oxoaniones[cite: 1]
+        Entrenador Extensivo Máximo • Base de datos de Oxisales y Oxoaniones[cite: 1, 3]
     </footer>
 
     <script>
         const db = [
-            // ================= OXOANIONES =================[cite: 1]
+            // ================= OXOANIONES =================[cite: 1, 3]
             { formula: "\\mathrm{IO}^-", category: "Oxoanión", trad: ["hipoyodito"], iupac: ["oxidoyodato", "monoxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
             { formula: "\\mathrm{IO}_2^-", category: "Oxoanión", trad: ["yodito"], iupac: ["dioxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
             { formula: "\\mathrm{IO}_3^-", category: "Oxoanión", trad: ["yodato"], iupac: ["trioxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
@@ -199,7 +199,7 @@
             { formula: "\\mathrm{CrO}_4^{2-}", category: "Oxoanión", trad: ["cromato"], iupac: ["tetraoxidocromato"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
             { formula: "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["dicromato"], iupac: ["heptaoxidodicromato"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
 
-            // ================= OXISALES NEUTRALES (VALENCIA FIJA) =================[cite: 1]
+            // ================= OXISALES NEUTRALES (VALENCIA FIJA) =================[cite: 1, 3]
             { formula: "\\mathrm{NaClO}", category: "Oxisal (Na)", trad: ["hipoclorito de sodio", "hipoclorito sodico"], iupac: ["oxidoclorato de sodio", "monoxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
             { formula: "\\mathrm{NaClO}_2", category: "Oxisal (Na)", trad: ["clorito de sodio", "clorito sodico"], iupac: ["dioxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
             { formula: "\\mathrm{NaClO}_3", category: "Oxisal (Na)", trad: ["clorato de sodio", "clorato sodico"], iupac: ["trioxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
@@ -267,7 +267,7 @@
             { formula: "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", category: "Oxisal (Amonio)", trad: ["carbonato de amonio"], iupac: ["trioxidocarbonato de diamonio", "trioxidocarbonato de amonio"], options: ["\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", "\\mathrm{NH}_4\\mathrm{HCO}_3"] },
             { formula: "\\mathrm{(NH}_4)_3\\mathrm{PO}_4", category: "Oxisal (Amonio)", trad: ["fosfato de amonio"], iupac: ["tetraoxidofosfato de triamonio", "tetraoxidofosfato de amonio"], options: ["\\mathrm{(NH}_4)_3\\mathrm{PO}_4", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{NH}_4\\mathrm{H}_2\\mathrm{PO}_4"] },
 
-            // ================= OXISALES (VALENCIA VARIABLE SIN PARÉNTESIS DE VALENCIA EN IUPAC) =================[cite: 1]
+            // ================= OXISALES (VALENCIA VARIABLE SIN PARÉNTESIS DE VALENCIA EN IUPAC) =================[cite: 1, 3]
             { formula: "\\mathrm{Fe(NO}_3)_2", category: "Oxisal (Fe II)", trad: ["nitrato de hierro(ii)"], iupac: ["bis(trioxidonitrato) de hierro", "trioxidonitrato de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
             { formula: "\\mathrm{Fe(NO}_3)_3", category: "Oxisal (Fe III)", trad: ["nitrato de hierro(iii)"], iupac: ["tris(trioxidonitrato) de hierro", "trioxidonitrato de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
             { formula: "\\mathrm{FeSO}_4", category: "Oxisal (Fe II)", trad: ["sulfato de hierro(ii)"], iupac: ["tetraoxidosulfato de hierro"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
@@ -404,7 +404,8 @@
                 shuffledOpts.forEach(opt => {
                     const btn = document.createElement('button');
                     btn.className = "p-4 bg-slate-900 hover:bg-slate-700 active:bg-slate-600 rounded-xl border border-slate-700 font-bold text-center text-lg transition flex items-center justify-center min-h-[4.5rem]";
-                    btn.onclick = () => checkMode2(opt);
+                    btn.dataset.formulaVal = opt;
+                    btn.onclick = () => checkMode2(opt, btn);
                     renderMath(btn, opt);
                     optsContainer.appendChild(btn);
                 });
@@ -434,8 +435,26 @@
             showFeedback(isCorrect, details);
         }
 
-        function checkMode2(selectedOpt) {
+        function checkMode2(selectedOpt, clickedBtn) {
+            // Deshabilitar todos los botones para evitar múltiples clics
+            const allBtns = document.querySelectorAll('#optionsGrid button');
+            allBtns.forEach(b => b.onclick = null);
+
             const isOk = selectedOpt === currentItem.formula;
+
+            // Resaltar la opción correcta en verde y la seleccionada incorrecta en rojo
+            allBtns.forEach(b => {
+                if (b.dataset.formulaVal === currentItem.formula) {
+                    b.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
+                    b.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
+                }
+            });
+
+            if (!isOk) {
+                clickedBtn.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
+                clickedBtn.classList.add('border-rose-500', 'bg-rose-950/80', 'text-rose-200');
+            }
+
             let details = `
                 <div class="space-y-1">
                     <p>• Tradicional / Stock: <strong class="text-teal-300">${currentItem.trad[0]}</strong></p>
@@ -451,6 +470,18 @@
 
             document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
             document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
+
+            // Si está en el modo 2, revelar visualmente la correcta
+            if (currentMode === 2) {
+                const allBtns = document.querySelectorAll('#optionsGrid button');
+                allBtns.forEach(b => {
+                    b.onclick = null;
+                    if (b.dataset.formulaVal === currentItem.formula) {
+                        b.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
+                        b.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
+                    }
+                });
+            }
 
             let details = `
                 <div class="space-y-1">
