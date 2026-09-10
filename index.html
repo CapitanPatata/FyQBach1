@@ -31,9 +31,50 @@
 
     <main class="max-w-xl w-full mx-auto p-4 my-auto">
         
-        <!-- Pantalla de Menú Principal Modificada -->
-        <div id="menuScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6">
+        <!-- Menú Principal -->
+        <div id="mainMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6">
             <h2 class="text-2xl font-bold text-teal-400">Menú Principal</h2>
+            <p class="text-sm text-slate-400">Selecciona el trimestre:</p>
+            <div class="space-y-4 pt-2">
+                <button onclick="showScreen('trimestre1Menu')" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    1er Trimestre
+                </button>
+                <button onclick="showEmptyTrimestre('2do Trimestre')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    2do Trimestre
+                </button>
+                <button onclick="showEmptyTrimestre('3er Trimestre')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    3er Trimestre
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú 1er Trimestre -->
+        <div id="trimestre1Menu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
+            <h2 class="text-2xl font-bold text-teal-400">1er Trimestre</h2>
+            <div class="space-y-4 pt-2">
+                <button onclick="showScreen('menuScreen')" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Tema 1
+                </button>
+                <button onclick="showScreen('mainMenu')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Volver
+                </button>
+            </div>
+        </div>
+
+        <!-- Pantalla para 2do y 3er Trimestre (Solo botón volver) -->
+        <div id="emptyTrimestreScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
+            <h2 id="emptyTitle" class="text-2xl font-bold text-teal-400">Trimestre</h2>
+            <p class="text-sm text-slate-400">Contenido no disponible todavía.</p>
+            <div class="pt-2">
+                <button onclick="showScreen('mainMenu')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Volver
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Original del Código (Tema 1) -->
+        <div id="menuScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
+            <h2 class="text-2xl font-bold text-teal-400">Tema 1: Oxisales y Oxoaniones</h2>
             <p class="text-sm text-slate-400">Selecciona el modo de práctica deseado:</p>
             <div class="space-y-4 pt-2">
                 <button onclick="startPractice(1)" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
@@ -41,6 +82,9 @@
                 </button>
                 <button onclick="startPractice(2)" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Seleccionar Fórmula
+                </button>
+                <button onclick="showScreen('trimestre1Menu')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Volver
                 </button>
             </div>
         </div>
@@ -68,23 +112,30 @@
                 </div>
             </div>
 
-            <div id="formMode1" class="space-y-4 my-6">
+            <div id="formMode1" class="space-y-3 my-6">
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura Tradicional / Stock:</label>
-                    <input type="text" id="inputTrad" placeholder="Ej: sulfato de hierro(iii) / hipoyodito de sodio" autocomplete="off" spellcheck="false"
+                    <input type="text" id="inputTrad" placeholder="Ej: sulfato de hierro / hipoyodito de sodio" autocomplete="off" spellcheck="false"
                         class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-teal-400 text-slate-100 transition">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura IUPAC / Sistema:</label>
-                    <input type="text" id="inputIupac" placeholder="Ej: tetraoxidosulfato de hierro(III)" autocomplete="off" spellcheck="false"
+                    <input type="text" id="inputIupac" placeholder="Ej: tetraoxidosulfato de hierro" autocomplete="off" spellcheck="false"
                         class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-teal-400 text-slate-100 transition">
                 </div>
                 <button onclick="checkMode1()" class="w-full py-3 bg-teal-600 hover:bg-teal-500 rounded-lg font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
                     Comprobar Respuesta
                 </button>
+                <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition">
+                    ¿No lo sabes? Ver solución directamente
+                </button>
             </div>
 
-            <div id="formMode2" class="grid grid-cols-2 gap-3 my-6 hidden">
+            <div id="formMode2" class="space-y-3 my-6 hidden">
+                <div id="optionsGrid" class="grid grid-cols-2 gap-3"></div>
+                <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition mt-2">
+                    ¿No lo sabes? Ver solución directamente
+                </button>
             </div>
 
             <div id="feedbackBox" class="hidden rounded-xl p-4 text-sm space-y-2 mt-4">
@@ -105,48 +156,48 @@
     <script>
         const db = [
             // ================= OXOANIONES =================[cite: 1]
-            { formula: "\\mathrm{IO}^-", category: "Oxoanión", trad: ["hipoyodito"], iupac: ["oxidoyodato(1-)", "monoxidoyodato(1-)"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{IO}_2^-", category: "Oxoanión", trad: ["yodito"], iupac: ["dioxidoyodato(1-)"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{IO}_3^-", category: "Oxoanión", trad: ["yodato"], iupac: ["trioxidoyodato(1-)"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{IO}_4^-", category: "Oxoanión", trad: ["periodato"], iupac: ["tetraoxidoyodato(1-)"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{ClO}^-", category: "Oxoanión", trad: ["hipoclorito"], iupac: ["oxidoclorato(1-)", "monoxidoclorato(1-)"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{ClO}_2^-", category: "Oxoanión", trad: ["clorito"], iupac: ["dioxidoclorato(1-)"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{ClO}_3^-", category: "Oxoanión", trad: ["clorato"], iupac: ["trioxidoclorato(1-)"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{ClO}_4^-", category: "Oxoanión", trad: ["perclorato"], iupac: ["tetraoxidoclorato(1-)"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{BrO}^-", category: "Oxoanión", trad: ["hipobromito"], iupac: ["oxidobromato(1-)"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{BrO}_2^-", category: "Oxoanión", trad: ["bromito"], iupac: ["dioxidobromato(1-)"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{BrO}_3^-", category: "Oxoanión", trad: ["bromato"], iupac: ["trioxidobromato(1-)"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{BrO}_4^-", category: "Oxoanión", trad: ["perbromato"], iupac: ["tetraoxidobromato(1-)"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{SO}_3^{2-}", category: "Oxoanión", trad: ["sulfito"], iupac: ["trioxidosulfato(2-)"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{HSO}_4^-"] },
-            { formula: "\\mathrm{SO}_4^{2-}", category: "Oxoanión", trad: ["sulfato"], iupac: ["tetraoxidosulfato(2-)"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{HSO}_4^-"] },
-            { formula: "\\mathrm{S}_2\\mathrm{O}_3^{2-}", category: "Oxoanión", trad: ["tiosulfato"], iupac: ["trioxidotiosulfato(2-)", "trioxidodisulfato(2-)"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{S}_2\\mathrm{O}_7^{2-}"] },
-            { formula: "\\mathrm{S}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["disulfato", "pirosulfato"], iupac: ["heptaoxidodisulfato(2-)"], options: ["\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{S}_2\\mathrm{O}_7^{2-}", "\\mathrm{SO}_3^{2-}"] },
-            { formula: "\\mathrm{HSO}_4^-", category: "Oxoanión Ácido", trad: ["sulfato acido", "bisulfato"], iupac: ["hidrogeno(tetraoxidosulfato)(1-)", "hidrogenosulfato(1-)"], options: ["\\mathrm{SO}_4^{2-}", "\\mathrm{HSO}_4^-", "\\mathrm{HSO}_3^-", "\\mathrm{S}_2\\mathrm{O}_8^{2-}"] },
-            { formula: "\\mathrm{HSO}_3^-", category: "Oxoanión Ácido", trad: ["sulfito acido", "bisulfito"], iupac: ["hidrogeno(trioxidosulfato)(1-)", "hidrogenosulfito(1-)"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{HSO}_3^-", "\\mathrm{HSO}_4^-", "\\mathrm{S}^{2-}"] },
-            { formula: "\\mathrm{NO}_2^-", category: "Oxoanión", trad: ["nitrito"], iupac: ["dioxidonitrato(1-)"], options: ["\\mathrm{NO}_2^-", "\\mathrm{NO}_3^-", "\\mathrm{NO}^-", "\\mathrm{NH}_4^+"] },
-            { formula: "\\mathrm{NO}_3^-", category: "Oxoanión", trad: ["nitrato"], iupac: ["trioxidonitrato(1-)"], options: ["\\mathrm{NO}_2^-", "\\mathrm{NO}_3^-", "\\mathrm{NO}^-", "\\mathrm{NH}_4^+"] },
-            { formula: "\\mathrm{CO}_3^{2-}", category: "Oxoanión", trad: ["carbonato"], iupac: ["trioxidocarbonato(2-)"], options: ["\\mathrm{CO}_2^{2-}", "\\mathrm{CO}_3^{2-}", "\\mathrm{HCO}_3^-", "\\mathrm{CO}_4^{2-}"] },
-            { formula: "\\mathrm{HCO}_3^-", category: "Oxoanión Ácido", trad: ["carbonato acido", "bicarbonato"], iupac: ["hidrogeno(trioxidocarbonato)(1-)", "hidrogenocarbonato(1-)"], options: ["\\mathrm{CO}_3^{2-}", "\\mathrm{HCO}_3^-", "\\mathrm{H}_2\\mathrm{CO}_3", "\\mathrm{CO}_2"] },
-            { formula: "\\mathrm{PO}_3^{3-}", category: "Oxoanión", trad: ["fosfito", "ortofosfito"], iupac: ["trioxidofosfato(3-)"], options: ["\\mathrm{PO}_3^{3-}", "\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_3^{2-}", "\\mathrm{HPO}_4^{2-}"] },
-            { formula: "\\mathrm{PO}_4^{3-}", category: "Oxoanión", trad: ["fosfato", "ortofosfato"], iupac: ["tetraoxidofosfato(3-)"], options: ["\\mathrm{PO}_3^{3-}", "\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-"] },
-            { formula: "\\mathrm{HPO}_4^{2-}", category: "Oxoanión Ácido", trad: ["monohidrogenofosfato", "fosfato monoacido"], iupac: ["hidrogeno(tetraoxidofosfato)(2-)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-", "\\mathrm{P}_2\\mathrm{O}_7^{4-}"] },
-            { formula: "\\mathrm{H}_2\\mathrm{PO}_4^-", category: "Oxoanión Ácido", trad: ["dihidrogenofosfato", "fosfato diacido"], iupac: ["dihidrogeno(tetraoxidofosfato)(1-)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-", "\\mathrm{PO}_3^-"] },
-            { formula: "\\mathrm{P}_2\\mathrm{O}_7^{4-}", category: "Oxoanión", trad: ["difosfato", "pirofosfato"], iupac: ["heptaoxidodifosfato(4-)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{P}_2\\mathrm{O}_7^{4-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{PO}_3^{3-}"] },
-            { formula: "\\mathrm{AsO}_3^{3-}", category: "Oxoanión", trad: ["arsenito"], iupac: ["trioxidoarseniato(3-)"], options: ["\\mathrm{AsO}_3^{3-}", "\\mathrm{AsO}_4^{3-}", "\\mathrm{HAsO}_3^{2-}", "\\mathrm{As}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{AsO}_4^{3-}", category: "Oxoanión", trad: ["arseniato"], iupac: ["tetraoxidoarseniato(3-)"], options: ["\\mathrm{AsO}_3^{3-}", "\\mathrm{AsO}_4^{3-}", "\\mathrm{H}_2\\mathrm{AsO}_4^-", "\\mathrm{As}_2\\mathrm{O}_5"] },
-            { formula: "\\mathrm{SbO}_4^{3-}", category: "Oxoanión", trad: ["antimoniato"], iupac: ["tetraoxidoantimoniato(3-)"], options: ["\\mathrm{SbO}_4^{3-}", "\\mathrm{SbO}_3^{3-}", "\\mathrm{Sb}_2\\mathrm{O}_5", "\\mathrm{SbO}_3^-"] },
-            { formula: "\\mathrm{SeO}_3^{2-}", category: "Oxoanión", trad: ["selenito"], iupac: ["trioxidoseleniato(2-)"], options: ["\\mathrm{SeO}_3^{2-}", "\\mathrm{SeO}_4^{2-}", "\\mathrm{Se}^{2-}", "\\mathrm{HSeO}_3^-"] },
-            { formula: "\\mathrm{SeO}_4^{2-}", category: "Oxoanión", trad: ["selenato"], iupac: ["tetraoxidoseleniato(2-)"], options: ["\\mathrm{SeO}_3^{2-}", "\\mathrm{SeO}_4^{2-}", "\\mathrm{Se}^{2-}", "\\mathrm{HSeO}_4^-"] },
-            { formula: "\\mathrm{TeO}_3^{2-}", category: "Oxoanión", trad: ["telurito"], iupac: ["trioxidotelurato(2-)"], options: ["\\mathrm{TeO}_3^{2-}", "\\mathrm{TeO}_4^{2-}", "\\mathrm{Te}^{2-}", "\\mathrm{HTeO}_3^-"] },
-            { formula: "\\mathrm{TeO}_4^{2-}", category: "Oxoanión", trad: ["telurato"], iupac: ["tetraoxidotelurato(2-)"], options: ["\\mathrm{TeO}_3^{2-}", "\\mathrm{TeO}_4^{2-}", "\\mathrm{Te}^{2-}", "\\mathrm{HTeO}_4^-"] },
-            { formula: "\\mathrm{SiO}_3^{2-}", category: "Oxoanión", trad: ["silicato", "metasilicato"], iupac: ["trioxidosilicato(2-)"], options: ["\\mathrm{SiO}_3^{2-}", "\\mathrm{SiO}_4^{4-}", "\\mathrm{Si}^{4-}", "\\mathrm{HSiO}_3^-"] },
-            { formula: "\\mathrm{SiO}_4^{4-}", category: "Oxoanión", trad: ["ortosilicato"], iupac: ["tetraoxidosilicato(4-)"], options: ["\\mathrm{SiO}_3^{2-}", "\\mathrm{SiO}_4^{4-}", "\\mathrm{Si}^{4-}", "\\mathrm{HSiO}_3^-"] },
-            { formula: "\\mathrm{BO}_3^{3-}", category: "Oxoanión", trad: ["borato", "ortoborato"], iupac: ["trioxidoborato(3-)"], options: ["\\mathrm{BO}_3^{3-}", "\\mathrm{BO}_2^-", "\\mathrm{B}_4\\mathrm{O}_7^{2-}", "\\mathrm{HBO}_3^{2-}"] },
-            { formula: "\\mathrm{B}_4\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["tetraborato", "piroborato"], iupac: ["heptaoxidotetraborato(2-)"], options: ["\\mathrm{BO}_3^{3-}", "\\mathrm{B}_4\\mathrm{O}_7^{2-}", "\\mathrm{BO}_2^-", "\\mathrm{B}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{MnO}_4^-", category: "Oxoanión", trad: ["permanganato"], iupac: ["tetraoxidomanganato(1-)"], options: ["\\mathrm{MnO}_4^-", "\\mathrm{MnO}_4^{2-}", "\\mathrm{MnO}_3^-", "\\mathrm{MnO}_2"] },
-            { formula: "\\mathrm{MnO}_4^{2-}", category: "Oxoanión", trad: ["manganato"], iupac: ["tetraoxidomanganato(2-)"], options: ["\\mathrm{MnO}_4^-", "\\mathrm{MnO}_4^{2-}", "\\mathrm{MnO}_3^-", "\\mathrm{MnO}_2"] },
-            { formula: "\\mathrm{CrO}_4^{2-}", category: "Oxoanión", trad: ["cromato"], iupac: ["tetraoxidocromato(2-)"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
-            { formula: "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["dicromato"], iupac: ["heptaoxidodicromato(2-)"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
+            { formula: "\\mathrm{IO}^-", category: "Oxoanión", trad: ["hipoyodito"], iupac: ["oxidoyodato", "monoxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
+            { formula: "\\mathrm{IO}_2^-", category: "Oxoanión", trad: ["yodito"], iupac: ["dioxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
+            { formula: "\\mathrm{IO}_3^-", category: "Oxoanión", trad: ["yodato"], iupac: ["trioxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
+            { formula: "\\mathrm{IO}_4^-", category: "Oxoanión", trad: ["periodato"], iupac: ["tetraoxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
+            { formula: "\\mathrm{ClO}^-", category: "Oxoanión", trad: ["hipoclorito"], iupac: ["oxidoclorato", "monoxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
+            { formula: "\\mathrm{ClO}_2^-", category: "Oxoanión", trad: ["clorito"], iupac: ["dioxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
+            { formula: "\\mathrm{ClO}_3^-", category: "Oxoanión", trad: ["clorato"], iupac: ["trioxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
+            { formula: "\\mathrm{ClO}_4^-", category: "Oxoanión", trad: ["perclorato"], iupac: ["tetraoxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
+            { formula: "\\mathrm{BrO}^-", category: "Oxoanión", trad: ["hipobromito"], iupac: ["oxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
+            { formula: "\\mathrm{BrO}_2^-", category: "Oxoanión", trad: ["bromito"], iupac: ["dioxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
+            { formula: "\\mathrm{BrO}_3^-", category: "Oxoanión", trad: ["bromato"], iupac: ["trioxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
+            { formula: "\\mathrm{BrO}_4^-", category: "Oxoanión", trad: ["perbromato"], iupac: ["tetraoxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
+            { formula: "\\mathrm{SO}_3^{2-}", category: "Oxoanión", trad: ["sulfito"], iupac: ["trioxidosulfato"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{HSO}_4^-"] },
+            { formula: "\\mathrm{SO}_4^{2-}", category: "Oxoanión", trad: ["sulfato"], iupac: ["tetraoxidosulfato"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{HSO}_4^-"] },
+            { formula: "\\mathrm{S}_2\\mathrm{O}_3^{2-}", category: "Oxoanión", trad: ["tiosulfato"], iupac: ["trioxidotiosulfato", "trioxidodisulfato"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{S}_2\\mathrm{O}_7^{2-}"] },
+            { formula: "\\mathrm{S}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["disulfato", "pirosulfato"], iupac: ["heptaoxidodisulfato"], options: ["\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{S}_2\\mathrm{O}_7^{2-}", "\\mathrm{SO}_3^{2-}"] },
+            { formula: "\\mathrm{HSO}_4^-", category: "Oxoanión Ácido", trad: ["sulfato acido", "bisulfato"], iupac: ["hidrogeno(tetraoxidosulfato)", "hidrogenosulfato"], options: ["\\mathrm{SO}_4^{2-}", "\\mathrm{HSO}_4^-", "\\mathrm{HSO}_3^-", "\\mathrm{S}_2\\mathrm{O}_8^{2-}"] },
+            { formula: "\\mathrm{HSO}_3^-", category: "Oxoanión Ácido", trad: ["sulfito acido", "bisulfito"], iupac: ["hidrogeno(trioxidosulfato)", "hidrogenosulfito"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{HSO}_3^-", "\\mathrm{HSO}_4^-", "\\mathrm{S}^{2-}"] },
+            { formula: "\\mathrm{NO}_2^-", category: "Oxoanión", trad: ["nitrito"], iupac: ["dioxidonitrato"], options: ["\\mathrm{NO}_2^-", "\\mathrm{NO}_3^-", "\\mathrm{NO}^-", "\\mathrm{NH}_4^+"] },
+            { formula: "\\mathrm{NO}_3^-", category: "Oxoanión", trad: ["nitrato"], iupac: ["trioxidonitrato"], options: ["\\mathrm{NO}_2^-", "\\mathrm{NO}_3^-", "\\mathrm{NO}^-", "\\mathrm{NH}_4^+"] },
+            { formula: "\\mathrm{CO}_3^{2-}", category: "Oxoanión", trad: ["carbonato"], iupac: ["trioxidocarbonato"], options: ["\\mathrm{CO}_2^{2-}", "\\mathrm{CO}_3^{2-}", "\\mathrm{HCO}_3^-", "\\mathrm{CO}_4^{2-}"] },
+            { formula: "\\mathrm{HCO}_3^-", category: "Oxoanión Ácido", trad: ["carbonato acido", "bicarbonato"], iupac: ["hidrogeno(trioxidocarbonato)", "hidrogenocarbonato"], options: ["\\mathrm{CO}_3^{2-}", "\\mathrm{HCO}_3^-", "\\mathrm{H}_2\\mathrm{CO}_3", "\\mathrm{CO}_2"] },
+            { formula: "\\mathrm{PO}_3^{3-}", category: "Oxoanión", trad: ["fosfito", "ortofosfito"], iupac: ["trioxidofosfato"], options: ["\\mathrm{PO}_3^{3-}", "\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_3^{2-}", "\\mathrm{HPO}_4^{2-}"] },
+            { formula: "\\mathrm{PO}_4^{3-}", category: "Oxoanión", trad: ["fosfato", "ortofosfato"], iupac: ["tetraoxidofosfato"], options: ["\\mathrm{PO}_3^{3-}", "\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-"] },
+            { formula: "\\mathrm{HPO}_4^{2-}", category: "Oxoanión Ácido", trad: ["monohidrogenofosfato", "fosfato monoacido"], iupac: ["hidrogeno(tetraoxidofosfato)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-", "\\mathrm{P}_2\\mathrm{O}_7^{4-}"] },
+            { formula: "\\mathrm{H}_2\\mathrm{PO}_4^-", category: "Oxoanión Ácido", trad: ["dihidrogenofosfato", "fosfato diacido"], iupac: ["dihidrogeno(tetraoxidofosfato)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-", "\\mathrm{PO}_3^-"] },
+            { formula: "\\mathrm{P}_2\\mathrm{O}_7^{4-}", category: "Oxoanión", trad: ["difosfato", "pirofosfato"], iupac: ["heptaoxidodifosfato"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{P}_2\\mathrm{O}_7^{4-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{PO}_3^{3-}"] },
+            { formula: "\\mathrm{AsO}_3^{3-}", category: "Oxoanión", trad: ["arsenito"], iupac: ["trioxidoarseniato"], options: ["\\mathrm{AsO}_3^{3-}", "\\mathrm{AsO}_4^{3-}", "\\mathrm{HAsO}_3^{2-}", "\\mathrm{As}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{AsO}_4^{3-}", category: "Oxoanión", trad: ["arseniato"], iupac: ["tetraoxidoarseniato"], options: ["\\mathrm{AsO}_3^{3-}", "\\mathrm{AsO}_4^{3-}", "\\mathrm{H}_2\\mathrm{AsO}_4^-", "\\mathrm{As}_2\\mathrm{O}_5"] },
+            { formula: "\\mathrm{SbO}_4^{3-}", category: "Oxoanión", trad: ["antimoniato"], iupac: ["tetraoxidoantimoniato"], options: ["\\mathrm{SbO}_4^{3-}", "\\mathrm{SbO}_3^{3-}", "\\mathrm{Sb}_2\\mathrm{O}_5", "\\mathrm{SbO}_3^-"] },
+            { formula: "\\mathrm{SeO}_3^{2-}", category: "Oxoanión", trad: ["selenito"], iupac: ["trioxidoseleniato"], options: ["\\mathrm{SeO}_3^{2-}", "\\mathrm{SeO}_4^{2-}", "\\mathrm{Se}^{2-}", "\\mathrm{HSeO}_3^-"] },
+            { formula: "\\mathrm{SeO}_4^{2-}", category: "Oxoanión", trad: ["selenato"], iupac: ["tetraoxidoseleniato"], options: ["\\mathrm{SeO}_3^{2-}", "\\mathrm{SeO}_4^{2-}", "\\mathrm{Se}^{2-}", "\\mathrm{HSeO}_4^-"] },
+            { formula: "\\mathrm{TeO}_3^{2-}", category: "Oxoanión", trad: ["telurito"], iupac: ["trioxidotelurato"], options: ["\\mathrm{TeO}_3^{2-}", "\\mathrm{TeO}_4^{2-}", "\\mathrm{Te}^{2-}", "\\mathrm{HTeO}_3^-"] },
+            { formula: "\\mathrm{TeO}_4^{2-}", category: "Oxoanión", trad: ["telurato"], iupac: ["tetraoxidotelurato"], options: ["\\mathrm{TeO}_3^{2-}", "\\mathrm{TeO}_4^{2-}", "\\mathrm{Te}^{2-}", "\\mathrm{HTeO}_4^-"] },
+            { formula: "\\mathrm{SiO}_3^{2-}", category: "Oxoanión", trad: ["silicato", "metasilicato"], iupac: ["trioxidosilicato"], options: ["\\mathrm{SiO}_3^{2-}", "\\mathrm{SiO}_4^{4-}", "\\mathrm{Si}^{4-}", "\\mathrm{HSiO}_3^-"] },
+            { formula: "\\mathrm{SiO}_4^{4-}", category: "Oxoanión", trad: ["ortosilicato"], iupac: ["tetraoxidosilicato"], options: ["\\mathrm{SiO}_3^{2-}", "\\mathrm{SiO}_4^{4-}", "\\mathrm{Si}^{4-}", "\\mathrm{HSiO}_3^-"] },
+            { formula: "\\mathrm{BO}_3^{3-}", category: "Oxoanión", trad: ["borato", "ortoborato"], iupac: ["trioxidoborato"], options: ["\\mathrm{BO}_3^{3-}", "\\mathrm{BO}_2^-", "\\mathrm{B}_4\\mathrm{O}_7^{2-}", "\\mathrm{HBO}_3^{2-}"] },
+            { formula: "\\mathrm{B}_4\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["tetraborato", "piroborato"], iupac: ["heptaoxidotetraborato"], options: ["\\mathrm{BO}_3^{3-}", "\\mathrm{B}_4\\mathrm{O}_7^{2-}", "\\mathrm{BO}_2^-", "\\mathrm{B}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{MnO}_4^-", category: "Oxoanión", trad: ["permanganato"], iupac: ["tetraoxidomanganato"], options: ["\\mathrm{MnO}_4^-", "\\mathrm{MnO}_4^{2-}", "\\mathrm{MnO}_3^-", "\\mathrm{MnO}_2"] },
+            { formula: "\\mathrm{MnO}_4^{2-}", category: "Oxoanión", trad: ["manganato"], iupac: ["tetraoxidomanganato"], options: ["\\mathrm{MnO}_4^-", "\\mathrm{MnO}_4^{2-}", "\\mathrm{MnO}_3^-", "\\mathrm{MnO}_2"] },
+            { formula: "\\mathrm{CrO}_4^{2-}", category: "Oxoanión", trad: ["cromato"], iupac: ["tetraoxidocromato"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
+            { formula: "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["dicromato"], iupac: ["heptaoxidodicromato"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
 
             // ================= OXISALES NEUTRALES (VALENCIA FIJA) =================[cite: 1]
             { formula: "\\mathrm{NaClO}", category: "Oxisal (Na)", trad: ["hipoclorito de sodio", "hipoclorito sodico"], iupac: ["oxidoclorato de sodio", "monoxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
@@ -216,55 +267,68 @@
             { formula: "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", category: "Oxisal (Amonio)", trad: ["carbonato de amonio"], iupac: ["trioxidocarbonato de diamonio", "trioxidocarbonato de amonio"], options: ["\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", "\\mathrm{NH}_4\\mathrm{HCO}_3"] },
             { formula: "\\mathrm{(NH}_4)_3\\mathrm{PO}_4", category: "Oxisal (Amonio)", trad: ["fosfato de amonio"], iupac: ["tetraoxidofosfato de triamonio", "tetraoxidofosfato de amonio"], options: ["\\mathrm{(NH}_4)_3\\mathrm{PO}_4", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{NH}_4\\mathrm{H}_2\\mathrm{PO}_4"] },
 
-            // ================= OXISALES (VALENCIA VARIABLE CON NOMENCLATURA DE STOCK) =================[cite: 1]
-            { formula: "\\mathrm{Fe(NO}_3)_2", category: "Oxisal (Fe II)", trad: ["nitrato de hierro(ii)"], iupac: ["bis(trioxidonitrato) de hierro", "trioxidonitrato de hierro(ii)", "nitrato de hierro(ii)"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
-            { formula: "\\mathrm{Fe(NO}_3)_3", category: "Oxisal (Fe III)", trad: ["nitrato de hierro(iii)"], iupac: ["tris(trioxidonitrato) de hierro", "trioxidonitrato de hierro(iii)", "nitrato de hierro(iii)"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{FeSO}_4", category: "Oxisal (Fe II)", trad: ["sulfato de hierro(ii)"], iupac: ["tetraoxidosulfato de hierro(ii)", "tetraoxidosulfato de hierro(2+)", "sulfato de hierro(ii)"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
-            { formula: "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Fe III)", trad: ["sulfato de hierro(iii)"], iupac: ["tris(tetraoxidosulfato) de dihierro", "tetraoxidosulfato de hierro(iii)", "tetraoxidosulfato de hierro(3+)", "sulfato de hierro(iii)"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
-            { formula: "\\mathrm{Fe(ClO}_3)_2", category: "Oxisal (Fe II)", trad: ["clorato de hierro(ii)"], iupac: ["bis(trioxidoclorato) de hierro", "trioxidoclorato de hierro(ii)", "clorato de hierro(ii)"], options: ["\\mathrm{Fe(ClO}_3)_2", "\\mathrm{Fe(ClO}_3)_3", "\\mathrm{Fe(ClO}_4)_2", "\\mathrm{FeCl}_2"] },
-            { formula: "\\mathrm{Fe(ClO}_3)_3", category: "Oxisal (Fe III)", trad: ["clorato de hierro(iii)"], iupac: ["tris(trioxidoclorato) de hierro", "trioxidoclorato de hierro(iii)", "clorato de hierro(iii)"], options: ["\\mathrm{Fe(ClO}_3)_2", "\\mathrm{Fe(ClO}_3)_3", "\\mathrm{Fe(ClO}_4)_3", "\\mathrm{FeCl}_3"] },
-            { formula: "\\mathrm{FeCO}_3", category: "Oxisal (Fe II)", trad: ["carbonato de hierro(ii)"], iupac: ["trioxidocarbonato de hierro(ii)", "carbonato de hierro(ii)"], options: ["\\mathrm{FeCO}_3", "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
-            { formula: "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", category: "Oxisal (Fe III)", trad: ["carbonato de hierro(iii)"], iupac: ["tris(trioxidocarbonato) de dihierro", "trioxidocarbonato de hierro(iii)", "carbonato de hierro(iii)"], options: ["\\mathrm{FeCO}_3", "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{CuNO}_3", category: "Oxisal (Cu I)", trad: ["nitrato de cobre(i)"], iupac: ["trioxidonitrato de cobre(i)", "trioxidonitrato de cobre(1+)", "nitrato de cobre(i)"], options: ["\\mathrm{CuNO}_3", "\\mathrm{Cu(NO}_3)_2", "\\mathrm{CuNO}_2", "\\mathrm{Cu}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Cu(NO}_3)_2", category: "Oxisal (Cu II)", trad: ["nitrato de cobre(ii)"], iupac: ["bis(trioxidonitrato) de cobre", "trioxidonitrato de cobre(ii)", "trioxidonitrato de cobre(2+)", "nitrato de cobre(ii)"], options: ["\\mathrm{CuNO}_3", "\\mathrm{Cu(NO}_3)_2", "\\mathrm{CuNO}_2", "\\mathrm{CuO}"] },
-            { formula: "\\mathrm{CuSO}_4", category: "Oxisal (Cu II)", trad: ["sulfato de cobre(ii)"], iupac: ["tetraoxidosulfato de cobre(ii)", "sulfato de cobre(ii)"], options: ["\\mathrm{CuSO}_4", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{CuSO}_3", "\\mathrm{CuS}"] },
-            { formula: "\\mathrm{Cu}_2\\mathrm{SO}_4", category: "Oxisal (Cu I)", trad: ["sulfato de cobre(i)"], iupac: ["tetraoxidosulfato de dicobre", "tetraoxidosulfato de cobre(i)", "sulfato de cobre(i)"], options: ["\\mathrm{CuSO}_4", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{CuSO}_3", "\\mathrm{Cu}_2\\mathrm{S}"] },
-            { formula: "\\mathrm{CuCO}_3", category: "Oxisal (Cu II)", trad: ["carbonato de cobre(ii)"], iupac: ["trioxidocarbonato de cobre(ii)", "carbonato de cobre(ii)"], options: ["\\mathrm{CuCO}_3", "\\mathrm{Cu}_2\\mathrm{CO}_3", "\\mathrm{CuSO}_4", "\\mathrm{CuO}"] },
-            { formula: "\\mathrm{Cu}_2\\mathrm{CO}_3", category: "Oxisal (Cu I)", trad: ["carbonato de cobre(i)"], iupac: ["trioxidocarbonato de dicobre", "trioxidocarbonato de cobre(i)", "carbonato de cobre(i)"], options: ["\\mathrm{CuCO}_3", "\\mathrm{Cu}_2\\mathrm{CO}_3", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{Cu}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Pb(NO}_3)_2", category: "Oxisal (Pb II)", trad: ["nitrato de plomo(ii)"], iupac: ["bis(trioxidonitrato) de plomo", "trioxidonitrato de plomo(ii)", "nitrato de plomo(ii)"], options: ["\\mathrm{Pb(NO}_3)_2", "\\mathrm{Pb(NO}_3)_4", "\\mathrm{PbSO}_4", "\\mathrm{PbCl}_2"] },
-            { formula: "\\mathrm{Pb(NO}_3)_4", category: "Oxisal (Pb IV)", trad: ["nitrato de plomo(iv)"], iupac: ["tetrakis(trioxidonitrato) de plomo", "trioxidonitrato de plomo(iv)", "nitrato de plomo(iv)"], options: ["\\mathrm{Pb(NO}_3)_2", "\\mathrm{Pb(NO}_3)_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbO}_2"] },
-            { formula: "\\mathrm{PbSO}_4", category: "Oxisal (Pb II)", trad: ["sulfato de plomo(ii)"], iupac: ["tetraoxidosulfato de plomo(ii)", "sulfato de plomo(ii)"], options: ["\\mathrm{PbSO}_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbSO}_3", "\\mathrm{PbO}"] },
-            { formula: "\\mathrm{Pb(SO}_4)_2", category: "Oxisal (Pb IV)", trad: ["sulfato de plomo(iv)"], iupac: ["bis(tetraoxidosulfato) de plomo", "tetraoxidosulfato de plomo(iv)", "sulfato de plomo(iv)"], options: ["\\mathrm{PbSO}_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbSO}_3", "\\mathrm{PbO}_2"] },
-            { formula: "\\mathrm{Sn(NO}_3)_2", category: "Oxisal (Sn II)", trad: ["nitrato de estaño(ii)"], iupac: ["bis(trioxidonitrato) de estano", "trioxidonitrato de estano(ii)", "nitrato de estano(ii)"], options: ["\\mathrm{Sn(NO}_3)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{SnNO}_2", "\\mathrm{SnO}"] },
-            { formula: "\\mathrm{Sn(NO}_3)_4", category: "Oxisal (Sn IV)", trad: ["nitrato de estaño(iv)"], iupac: ["tetrakis(trioxidonitrato) de estano", "trioxidonitrato de estano(iv)", "nitrato de estano(iv)"], options: ["\\mathrm{Sn(NO}_3)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{SnO}_2"] },
-            { formula: "\\mathrm{SnSO}_4", category: "Oxisal (Sn II)", trad: ["sulfato de estaño(ii)"], iupac: ["tetraoxidosulfato de estano(ii)", "sulfato de estano(ii)"], options: ["\\mathrm{SnSO}_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{SnSO}_3", "\\mathrm{SnO}"] },
-            { formula: "\\mathrm{Sn(SO}_4)_2", category: "Oxisal (Sn IV)", trad: ["sulfato de estaño(iv)"], iupac: ["bis(tetraoxidosulfato) de estano", "tetraoxidosulfato de estano(iv)", "sulfato de estano(iv)"], options: ["\\mathrm{SnSO}_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{SnO}_2"] },
-            { formula: "\\mathrm{CoSO}_4", category: "Oxisal (Co II)", trad: ["sulfato de cobalto(ii)"], iupac: ["tetraoxidosulfato de cobalto(ii)", "sulfato de cobalto(ii)"], options: ["\\mathrm{CoSO}_4", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{CoCO}_3", "\\mathrm{CoO}"] },
-            { formula: "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Co III)", trad: ["sulfato de cobalto(iii)"], iupac: ["tris(tetraoxidosulfato) de dicobalto", "tetraoxidosulfato de cobalto(iii)", "sulfato de cobalto(iii)"], options: ["\\mathrm{CoSO}_4", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{CoCO}_3", "\\mathrm{Co}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Co(NO}_3)_2", category: "Oxisal (Co II)", trad: ["nitrato de cobalto(ii)"], iupac: ["bis(trioxidonitrato) de cobalto", "trioxidonitrato de cobalto(ii)", "nitrato de cobalto(ii)"], options: ["\\mathrm{Co(NO}_3)_2", "\\mathrm{Co(NO}_3)_3", "\\mathrm{CoSO}_4", "\\mathrm{CoO}"] },
-            { formula: "\\mathrm{Co(NO}_3)_3", category: "Oxisal (Co III)", trad: ["nitrato de cobalto(iii)"], iupac: ["tris(trioxidonitrato) de cobalto", "trioxidonitrato de cobalto(iii)", "nitrato de cobalto(iii)"], options: ["\\mathrm{Co(NO}_3)_2", "\\mathrm{Co(NO}_3)_3", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{Co}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{NiSO}_4", category: "Oxisal (Ni II)", trad: ["sulfato de níquel(ii)"], iupac: ["tetraoxidosulfato de niquel(ii)", "sulfato de niquel(ii)"], options: ["\\mathrm{NiSO}_4", "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", "\\mathrm{NiCO}_3", "\\mathrm{NiO}"] },
-            { formula: "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Ni III)", trad: ["sulfato de níquel(iii)"], iupac: ["tris(tetraoxidosulfato) de diniquel", "tetraoxidosulfato de niquel(iii)", "sulfato de niquel(iii)"], options: ["\\mathrm{NiSO}_4", "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", "\\mathrm{Ni}_2(\\mathrm{CO}_3)_3", "\\mathrm{Ni}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Ni(NO}_3)_2", category: "Oxisal (Ni II)", trad: ["nitrato de níquel(ii)"], iupac: ["bis(trioxidonitrato) de niquel", "trioxidonitrato de niquel(ii)", "nitrato de niquel(ii)"], options: ["\\mathrm{Ni(NO}_3)_2", "\\mathrm{Ni(NO}_3)_3", "\\mathrm{NiSO}_4", "\\mathrm{NiO}"] },
-            { formula: "\\mathrm{Hg}_2\\mathrm{SO}_4", category: "Oxisal (Hg I)", trad: ["sulfato de mercurio(i)"], iupac: ["tetraoxidosulfato de dimercurio", "tetraoxidosulfato de mercurio(i)", "sulfato de mercurio(i)"], options: ["\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{HgSO}_4", "\\mathrm{Hg}_2\\mathrm{NO}_3", "\\mathrm{Hg}_2\\mathrm{Cl}_2"] },
-            { formula: "\\mathrm{HgSO}_4", category: "Oxisal (Hg II)", trad: ["sulfato de mercurio(ii)"], iupac: ["tetraoxidosulfato de mercurio(ii)", "sulfato de mercurio(ii)"], options: ["\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{HgSO}_4", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{HgO}"] },
-            { formula: "\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", category: "Oxisal (Hg I)", trad: ["nitrato de mercurio(i)"], iupac: ["bis(trioxidonitrato) de dimercurio", "trioxidonitrato de mercurio(i)", "nitrato de mercurio(i)"], options: ["\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{Hg}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Hg(NO}_3)_2", category: "Oxisal (Hg II)", trad: ["nitrato de mercurio(ii)"], iupac: ["bis(trioxidonitrato) de mercurio", "trioxidonitrato de mercurio(ii)", "nitrato de mercurio(ii)"], options: ["\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{HgSO}_4", "\\mathrm{HgO}"] },
-            { formula: "\\mathrm{AuNO}_3", category: "Oxisal (Au I)", trad: ["nitrato de oro(i)"], iupac: ["trioxidonitrato de oro(i)", "trioxidonitrato de oro(1+)"], options: ["\\mathrm{AuNO}_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2\\mathrm{SO}_4", "\\mathrm{Au}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Au(NO}_3)_3", category: "Oxisal (Au III)", trad: ["nitrato de oro(iii)"], iupac: ["tris(trioxidonitrato) de oro", "trioxidonitrato de oro(iii)", "nitrato de oro(iii)"], options: ["\\mathrm{AuNO}_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", "\\mathrm{Au}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Au III)", trad: ["sulfato de oro(iii)"], iupac: ["tris(tetraoxidosulfato) de dioro", "tetraoxidosulfato de oro(iii)", "sulfato de oro(iii)"], options: ["\\mathrm{Au}_2\\mathrm{SO}_4", "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{PtSO}_4", category: "Oxisal (Pt II)", trad: ["sulfato de platino(ii)"], iupac: ["tetraoxidosulfato de platino(ii)", "sulfato de platino(ii)"], options: ["\\mathrm{PtSO}_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{Pt(NO}_3)_2", "\\mathrm{PtO}"] },
-            { formula: "\\mathrm{Pt(SO}_4)_2", category: "Oxisal (Pt IV)", trad: ["sulfato de platino(iv)"], iupac: ["bis(tetraoxidosulfato) de platino", "tetraoxidosulfato de platino(iv)", "sulfato de platino(iv)"], options: ["\\mathrm{PtSO}_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{PtO}_2"] },
-            { formula: "\\mathrm{Pt(NO}_3)_2", category: "Oxisal (Pt II)", trad: ["nitrato de platino(ii)"], iupac: ["bis(trioxidonitrato) de platino", "trioxidonitrato de platino(ii)", "nitrato de platino(ii)"], options: ["\\mathrm{Pt(NO}_3)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{PtSO}_4", "\\mathrm{PtO}"] },
-            { formula: "\\mathrm{Pt(NO}_3)_4", category: "Oxisal (Pt IV)", trad: ["nitrato de platino(iv)"], iupac: ["tetrakis(trioxidonitrato) de platino", "trioxidonitrato de platino(iv)", "nitrato de platino(iv)"], options: ["\\mathrm{Pt(NO}_3)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{PtO}_2"] },
-            { formula: "\\mathrm{Bi(NO}_3)_3", category: "Oxisal (Bi III)", trad: ["nitrato de bismuto(iii)"], iupac: ["tris(trioxidonitrato) de bismuto", "trioxidonitrato de bismuto(iii)"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{Bi}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Bi III)", trad: ["sulfato de bismuto(iii)"], iupac: ["tris(tetraoxidosulfato) de dibismuto", "tetraoxidosulfato de bismuto(iii)"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{Bi}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{BiPO}_4", category: "Oxisal (Bi III)", trad: ["fosfato de bismuto(iii)"], iupac: ["tetraoxidofosfato de bismuto(iii)", "tetraoxidofosfato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{BiPO}_3"] }
+            // ================= OXISALES (VALENCIA VARIABLE SIN PARÉNTESIS DE VALENCIA EN IUPAC) =================[cite: 1]
+            { formula: "\\mathrm{Fe(NO}_3)_2", category: "Oxisal (Fe II)", trad: ["nitrato de hierro(ii)"], iupac: ["bis(trioxidonitrato) de hierro", "trioxidonitrato de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
+            { formula: "\\mathrm{Fe(NO}_3)_3", category: "Oxisal (Fe III)", trad: ["nitrato de hierro(iii)"], iupac: ["tris(trioxidonitrato) de hierro", "trioxidonitrato de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{FeSO}_4", category: "Oxisal (Fe II)", trad: ["sulfato de hierro(ii)"], iupac: ["tetraoxidosulfato de hierro"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
+            { formula: "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Fe III)", trad: ["sulfato de hierro(iii)"], iupac: ["tris(tetraoxidosulfato) de dihierro", "tetraoxidosulfato de hierro"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
+            { formula: "\\mathrm{Fe(ClO}_3)_2", category: "Oxisal (Fe II)", trad: ["clorato de hierro(ii)"], iupac: ["bis(trioxidoclorato) de hierro", "trioxidoclorato de hierro"], options: ["\\mathrm{Fe(ClO}_3)_2", "\\mathrm{Fe(ClO}_3)_3", "\\mathrm{Fe(ClO}_4)_2", "\\mathrm{FeCl}_2"] },
+            { formula: "\\mathrm{Fe(ClO}_3)_3", category: "Oxisal (Fe III)", trad: ["clorato de hierro(iii)"], iupac: ["tris(trioxidoclorato) de hierro", "trioxidoclorato de hierro"], options: ["\\mathrm{Fe(ClO}_3)_2", "\\mathrm{Fe(ClO}_3)_3", "\\mathrm{Fe(ClO}_4)_3", "\\mathrm{FeCl}_3"] },
+            { formula: "\\mathrm{FeCO}_3", category: "Oxisal (Fe II)", trad: ["carbonato de hierro(ii)"], iupac: ["trioxidocarbonato de hierro"], options: ["\\mathrm{FeCO}_3", "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
+            { formula: "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", category: "Oxisal (Fe III)", trad: ["carbonato de hierro(iii)"], iupac: ["tris(trioxidocarbonato) de dihierro", "trioxidocarbonato de hierro"], options: ["\\mathrm{FeCO}_3", "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{CuNO}_3", category: "Oxisal (Cu I)", trad: ["nitrato de cobre(i)"], iupac: ["trioxidonitrato de cobre"], options: ["\\mathrm{CuNO}_3", "\\mathrm{Cu(NO}_3)_2", "\\mathrm{CuNO}_2", "\\mathrm{Cu}_2\\mathrm{O}"] },
+            { formula: "\\mathrm{Cu(NO}_3)_2", category: "Oxisal (Cu II)", trad: ["nitrato de cobre(ii)"], iupac: ["bis(trioxidonitrato) de cobre", "trioxidonitrato de cobre"], options: ["\\mathrm{CuNO}_3", "\\mathrm{Cu(NO}_3)_2", "\\mathrm{CuNO}_2", "\\mathrm{CuO}"] },
+            { formula: "\\mathrm{CuSO}_4", category: "Oxisal (Cu II)", trad: ["sulfato de cobre(ii)"], iupac: ["tetraoxidosulfato de cobre"], options: ["\\mathrm{CuSO}_4", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{CuSO}_3", "\\mathrm{CuS}"] },
+            { formula: "\\mathrm{Cu}_2\\mathrm{SO}_4", category: "Oxisal (Cu I)", trad: ["sulfato de cobre(i)"], iupac: ["tetraoxidosulfato de dicobre", "tetraoxidosulfato de cobre"], options: ["\\mathrm{CuSO}_4", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{CuSO}_3", "\\mathrm{Cu}_2\\mathrm{S}"] },
+            { formula: "\\mathrm{CuCO}_3", category: "Oxisal (Cu II)", trad: ["carbonato de cobre(ii)"], iupac: ["trioxidocarbonato de cobre"], options: ["\\mathrm{CuCO}_3", "\\mathrm{Cu}_2\\mathrm{CO}_3", "\\mathrm{CuSO}_4", "\\mathrm{CuO}"] },
+            { formula: "\\mathrm{Cu}_2\\mathrm{CO}_3", category: "Oxisal (Cu I)", trad: ["carbonato de cobre(i)"], iupac: ["trioxidocarbonato de dicobre", "trioxidocarbonato de cobre"], options: ["\\mathrm{CuCO}_3", "\\mathrm{Cu}_2\\mathrm{CO}_3", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{Cu}_2\\mathrm{O}"] },
+            { formula: "\\mathrm{Pb(NO}_3)_2", category: "Oxisal (Pb II)", trad: ["nitrato de plomo(ii)"], iupac: ["bis(trioxidonitrato) de plomo", "trioxidonitrato de plomo"], options: ["\\mathrm{Pb(NO}_3)_2", "\\mathrm{Pb(NO}_3)_4", "\\mathrm{PbSO}_4", "\\mathrm{PbCl}_2"] },
+            { formula: "\\mathrm{Pb(NO}_3)_4", category: "Oxisal (Pb IV)", trad: ["nitrato de plomo(iv)"], iupac: ["tetrakis(trioxidonitrato) de plomo", "trioxidonitrato de plomo"], options: ["\\mathrm{Pb(NO}_3)_2", "\\mathrm{Pb(NO}_3)_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbO}_2"] },
+            { formula: "\\mathrm{PbSO}_4", category: "Oxisal (Pb II)", trad: ["sulfato de plomo(ii)"], iupac: ["tetraoxidosulfato de plomo"], options: ["\\mathrm{PbSO}_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbSO}_3", "\\mathrm{PbO}"] },
+            { formula: "\\mathrm{Pb(SO}_4)_2", category: "Oxisal (Pb IV)", trad: ["sulfato de plomo(iv)"], iupac: ["bis(tetraoxidosulfato) de plomo", "tetraoxidosulfato de plomo"], options: ["\\mathrm{PbSO}_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbSO}_3", "\\mathrm{PbO}_2"] },
+            { formula: "\\mathrm{Sn(NO}_3)_2", category: "Oxisal (Sn II)", trad: ["nitrato de estaño(ii)"], iupac: ["bis(trioxidonitrato) de estano", "trioxidonitrato de estano"], options: ["\\mathrm{Sn(NO}_3)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{SnNO}_2", "\\mathrm{SnO}"] },
+            { formula: "\\mathrm{Sn(NO}_3)_4", category: "Oxisal (Sn IV)", trad: ["nitrato de estaño(iv)"], iupac: ["tetrakis(trioxidonitrato) de estano", "trioxidonitrato de estano"], options: ["\\mathrm{Sn(NO}_3)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{SnO}_2"] },
+            { formula: "\\mathrm{SnSO}_4", category: "Oxisal (Sn II)", trad: ["sulfato de estaño(ii)"], iupac: ["tetraoxidosulfato de estano"], options: ["\\mathrm{SnSO}_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{SnSO}_3", "\\mathrm{SnO}"] },
+            { formula: "\\mathrm{Sn(SO}_4)_2", category: "Oxisal (Sn IV)", trad: ["sulfato de estaño(iv)"], iupac: ["bis(tetraoxidosulfato) de estano", "tetraoxidosulfato de estano"], options: ["\\mathrm{SnSO}_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{SnO}_2"] },
+            { formula: "\\mathrm{CoSO}_4", category: "Oxisal (Co II)", trad: ["sulfato de cobalto(ii)"], iupac: ["tetraoxidosulfato de cobalto"], options: ["\\mathrm{CoSO}_4", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{CoCO}_3", "\\mathrm{CoO}"] },
+            { formula: "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Co III)", trad: ["sulfato de cobalto(iii)"], iupac: ["tris(tetraoxidosulfato) de dicobalto", "tetraoxidosulfato de cobalto"], options: ["\\mathrm{CoSO}_4", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{CoCO}_3", "\\mathrm{Co}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{Co(NO}_3)_2", category: "Oxisal (Co II)", trad: ["nitrato de cobalto(ii)"], iupac: ["bis(trioxidonitrato) de cobalto", "trioxidonitrato de cobalto"], options: ["\\mathrm{Co(NO}_3)_2", "\\mathrm{Co(NO}_3)_3", "\\mathrm{CoSO}_4", "\\mathrm{CoO}"] },
+            { formula: "\\mathrm{Co(NO}_3)_3", category: "Oxisal (Co III)", trad: ["nitrato de cobalto(iii)"], iupac: ["tris(trioxidonitrato) de cobalto", "trioxidonitrato de cobalto"], options: ["\\mathrm{Co(NO}_3)_2", "\\mathrm{Co(NO}_3)_3", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{Co}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{NiSO}_4", category: "Oxisal (Ni II)", trad: ["sulfato de níquel(ii)"], iupac: ["tetraoxidosulfato de niquel"], options: ["\\mathrm{NiSO}_4", "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", "\\mathrm{NiCO}_3", "\\mathrm{NiO}"] },
+            { formula: "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Ni III)", trad: ["sulfato de níquel(iii)"], iupac: ["tris(tetraoxidosulfato) de diniquel", "tetraoxidosulfato de niquel"], options: ["\\mathrm{NiSO}_4", "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", "\\mathrm{Ni}_2(\\mathrm{CO}_3)_3", "\\mathrm{Ni}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{Ni(NO}_3)_2", category: "Oxisal (Ni II)", trad: ["nitrato de níquel(ii)"], iupac: ["bis(trioxidonitrato) de niquel", "trioxidonitrato de niquel"], options: ["\\mathrm{Ni(NO}_3)_2", "\\mathrm{Ni(NO}_3)_3", "\\mathrm{NiSO}_4", "\\mathrm{NiO}"] },
+            { formula: "\\mathrm{Hg}_2\\mathrm{SO}_4", category: "Oxisal (Hg I)", trad: ["sulfato de mercurio(i)"], iupac: ["tetraoxidosulfato de dimercurio", "tetraoxidosulfato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{HgSO}_4", "\\mathrm{Hg}_2\\mathrm{NO}_3", "\\mathrm{Hg}_2\\mathrm{Cl}_2"] },
+            { formula: "\\mathrm{HgSO}_4", category: "Oxisal (Hg II)", trad: ["sulfato de mercurio(ii)"], iupac: ["tetraoxidosulfato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{HgSO}_4", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{HgO}"] },
+            { formula: "\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", category: "Oxisal (Hg I)", trad: ["nitrato de mercurio(i)"], iupac: ["bis(trioxidonitrato) de dimercurio", "trioxidonitrato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{Hg}_2\\mathrm{O}"] },
+            { formula: "\\mathrm{Hg(NO}_3)_2", category: "Oxisal (Hg II)", trad: ["nitrato de mercurio(ii)"], iupac: ["bis(trioxidonitrato) de mercurio", "trioxidonitrato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{HgSO}_4", "\\mathrm{HgO}"] },
+            { formula: "\\mathrm{AuNO}_3", category: "Oxisal (Au I)", trad: ["nitrato de oro(i)"], iupac: ["trioxidonitrato de oro"], options: ["\\mathrm{AuNO}_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2\\mathrm{SO}_4", "\\mathrm{Au}_2\\mathrm{O}"] },
+            { formula: "\\mathrm{Au(NO}_3)_3", category: "Oxisal (Au III)", trad: ["nitrato de oro(iii)"], iupac: ["tris(trioxidonitrato) de oro", "trioxidonitrato de oro"], options: ["\\mathrm{AuNO}_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", "\\mathrm{Au}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Au III)", trad: ["sulfato de oro(iii)"], iupac: ["tris(tetraoxidosulfato) de dioro", "tetraoxidosulfato de oro"], options: ["\\mathrm{Au}_2\\mathrm{SO}_4", "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{PtSO}_4", category: "Oxisal (Pt II)", trad: ["sulfato de platino(ii)"], iupac: ["tetraoxidosulfato de platino"], options: ["\\mathrm{PtSO}_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{Pt(NO}_3)_2", "\\mathrm{PtO}"] },
+            { formula: "\\mathrm{Pt(SO}_4)_2", category: "Oxisal (Pt IV)", trad: ["sulfato de platino(iv)"], iupac: ["bis(tetraoxidosulfato) de platino", "tetraoxidosulfato de platino"], options: ["\\mathrm{PtSO}_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{PtO}_2"] },
+            { formula: "\\mathrm{Pt(NO}_3)_2", category: "Oxisal (Pt II)", trad: ["nitrato de platino(ii)"], iupac: ["bis(trioxidonitrato) de platino", "trioxidonitrato de platino"], options: ["\\mathrm{Pt(NO}_3)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{PtSO}_4", "\\mathrm{PtO}"] },
+            { formula: "\\mathrm{Pt(NO}_3)_4", category: "Oxisal (Pt IV)", trad: ["nitrato de platino(iv)"], iupac: ["tetrakis(trioxidonitrato) de platino", "trioxidonitrato de platino"], options: ["\\mathrm{Pt(NO}_3)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{PtO}_2"] },
+            { formula: "\\mathrm{Bi(NO}_3)_3", category: "Oxisal (Bi III)", trad: ["nitrato de bismuto(iii)"], iupac: ["tris(trioxidonitrato) de bismuto", "trioxidonitrato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{Bi}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Bi III)", trad: ["sulfato de bismuto(iii)"], iupac: ["tris(tetraoxidosulfato) de dibismuto", "tetraoxidosulfato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{Bi}_2\\mathrm{O}_3"] },
+            { formula: "\\mathrm{BiPO}_4", category: "Oxisal (Bi III)", trad: ["fosfato de bismuto(iii)"], iupac: ["tetraoxidofosfato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{BiPO}_3"] }
         ];
 
         let currentItem = null;
         let currentMode = 1;
         let score = 0, total = 0, streak = 0;
+
+        function showScreen(screenId) {
+            const screens = ['mainMenu', 'trimestre1Menu', 'emptyTrimestreScreen', 'menuScreen', 'quizScreen'];
+            screens.forEach(s => {
+                document.getElementById(s).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function showEmptyTrimestre(title) {
+            document.getElementById('emptyTitle').innerText = title;
+            showScreen('emptyTrimestreScreen');
+        }
 
         function renderMath(targetElement, latexString) {
             targetElement.innerHTML = '';
@@ -279,22 +343,28 @@
             return str.trim().toLowerCase()
                 .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
                 .replace(/\s+/g, "")
-                .replace(/\(2\+\)/g, "(ii)")
-                .replace(/\(3\+\)/g, "(iii)")
-                .replace(/\(1\+\)/g, "(i)")
-                .replace(/\(4\+\)/g, "(iv)");
+                .replace(/\(2\+\)/g, "")
+                .replace(/\(3\+\)/g, "")
+                .replace(/\(1\+\)/g, "")
+                .replace(/\(4\+\)/g, "")
+                .replace(/\(ii\)/g, "")
+                .replace(/\(iii\)/g, "")
+                .replace(/\(iv\)/g, "")
+                .replace(/\(i\)/g, "")
+                .replace(/\(1-\)/g, "")
+                .replace(/\(2-\)/g, "")
+                .replace(/\(3-\)/g, "")
+                .replace(/\(4-\)/g, "");
         }
 
         function startPractice(mode) {
             currentMode = mode;
-            document.getElementById('menuScreen').classList.add('hidden');
-            document.getElementById('quizScreen').classList.remove('hidden');
+            showScreen('quizScreen');
             nextQuestion();
         }
 
         function returnToMenu() {
-            document.getElementById('quizScreen').classList.add('hidden');
-            document.getElementById('menuScreen').classList.remove('hidden');
+            showScreen('menuScreen');
         }
 
         function nextQuestion() {
@@ -326,7 +396,7 @@
                 document.getElementById('formMode1').classList.add('hidden');
                 document.getElementById('formMode2').classList.remove('hidden');
 
-                const optsContainer = document.getElementById('formMode2');
+                const optsContainer = document.getElementById('optionsGrid');
                 optsContainer.innerHTML = '';
                 
                 const shuffledOpts = [...currentItem.options].sort(() => Math.random() - 0.5);
@@ -375,6 +445,29 @@
             showFeedback(isOk, details);
         }
 
+        function revealSolution() {
+            total++;
+            streak = 0;
+
+            document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
+            document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
+
+            let details = `
+                <div class="space-y-1">
+                    <p>• Fórmula: <strong class="text-amber-300">${currentItem.formula}</strong></p>
+                    <p>• Tradicional / Stock: <strong class="text-teal-300">${currentItem.trad[0]}</strong></p>
+                    <p>• IUPAC / Sistema: <strong class="text-teal-300">${currentItem.iupac[0]}</strong></p>
+                </div>
+            `;
+
+            const fb = document.getElementById('feedbackBox');
+            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200');
+            fb.classList.add('bg-amber-950/90', 'border', 'border-amber-600', 'text-amber-200');
+            fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">Solución revelada:</p>${details}`;
+
+            document.getElementById('nextBtn').classList.remove('hidden');
+        }
+
         function showFeedback(isCorrect, details) {
             total++;
             if (isCorrect) { score++; streak++; } else { streak = 0; }
@@ -383,7 +476,7 @@
             document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
 
             const fb = document.getElementById('feedbackBox');
-            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200');
+            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200', 'bg-amber-950/90', 'border-amber-600', 'text-amber-200');
 
             if (isCorrect) {
                 fb.classList.add('bg-emerald-950/90', 'border', 'border-emerald-600', 'text-emerald-200');
