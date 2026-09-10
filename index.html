@@ -423,7 +423,15 @@
 
             const isTradOk = currentItem.trad.some(t => cleanStr(t) === userTrad);
             const isIupacOk = currentItem.iupac.some(i => cleanStr(i) === userIupac);
-            const isCorrect = isTradOk && isIupacOk;
+            
+            const correctCount = (isTradOk ? 1 : 0) + (isIupacOk ? 1 : 0);
+            let feedbackType = 'rose';
+            
+            if (correctCount === 2) {
+                feedbackType = 'green';
+            } else if (correctCount === 1) {
+                feedbackType = 'amber';
+            }
             
             let details = `
                 <div class="space-y-1">
@@ -432,7 +440,7 @@
                 </div>
             `;
 
-            showFeedback(isCorrect, details);
+            showFeedback(feedbackType, details);
         }
 
         function checkMode2(selectedOpt, clickedBtn) {
@@ -460,7 +468,7 @@
                     <p>• IUPAC / Sistema: <strong class="text-teal-300">${currentItem.iupac[0]}</strong></p>
                 </div>
             `;
-            showFeedback(isOk, details);
+            showFeedback(isOk ? 'green' : 'rose', details);
         }
 
         function revealSolution() {
@@ -489,16 +497,22 @@
             `;
 
             const fb = document.getElementById('feedbackBox');
-            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200');
+            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200', 'bg-amber-950/90', 'border-amber-600', 'text-amber-200');
             fb.classList.add('bg-amber-950/90', 'border', 'border-amber-600', 'text-amber-200');
             fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">Solución revelada:</p>${details}`;
 
             document.getElementById('nextBtn').classList.remove('hidden');
         }
 
-        function showFeedback(isCorrect, details) {
+        function showFeedback(type, details) {
             total++;
-            if (isCorrect) { score++; streak++; } else { streak = 0; }
+            const isFullyCorrect = (type === 'green');
+            if (isFullyCorrect) { 
+                score++; 
+                streak++; 
+            } else { 
+                streak = 0; 
+            }
 
             document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
             document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
@@ -506,9 +520,12 @@
             const fb = document.getElementById('feedbackBox');
             fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200', 'bg-amber-950/90', 'border-amber-600', 'text-amber-200');
 
-            if (isCorrect) {
+            if (type === 'green') {
                 fb.classList.add('bg-emerald-950/90', 'border', 'border-emerald-600', 'text-emerald-200');
                 fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">¡Excelente! ✨</p>${details}`;
+            } else if (type === 'amber') {
+                fb.classList.add('bg-amber-950/90', 'border', 'border-amber-600', 'text-amber-200');
+                fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">¡A medias! Has acertado una de dos.</p>${details}`;
             } else {
                 fb.classList.add('bg-rose-950/90', 'border', 'border-rose-600', 'text-rose-200');
                 fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">¡Incorrecto!</p>${details}`;
