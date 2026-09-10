@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web FyQ Reyes</title>
+    <title>Entrenador Extensivo Máximo: Oxisales y Oxoaniones</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -442,17 +442,19 @@
 
             const isOk = selectedOpt === currentItem.formula;
 
-            // Resaltar la opción correcta en verde y la seleccionada incorrecta en rojo
-            allBtns.forEach(b => {
-                if (b.dataset.formulaVal === currentItem.formula) {
-                    b.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
-                    b.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
-                }
-            });
-
-            if (!isOk) {
-                clickedBtn.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
+            // Iluminar el botón clickado según si acertó o falló
+            clickedBtn.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
+            if (isOk) {
+                clickedBtn.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
+            } else {
                 clickedBtn.classList.add('border-rose-500', 'bg-rose-950/80', 'text-rose-200');
+                // Revelar cuál era la correcta si falló
+                allBtns.forEach(b => {
+                    if (b.dataset.formulaVal === currentItem.formula) {
+                        b.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
+                        b.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
+                    }
+                });
             }
 
             let details = `
@@ -471,7 +473,6 @@
             document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
             document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
 
-            // Si está en el modo 2, revelar visualmente la correcta
             if (currentMode === 2) {
                 const allBtns = document.querySelectorAll('#optionsGrid button');
                 allBtns.forEach(b => {
