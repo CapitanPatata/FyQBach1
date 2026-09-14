@@ -77,12 +77,46 @@
             <h2 class="text-2xl font-bold text-teal-400">Tema 1: Oxisales y Tabla Periódica</h2>
             <p class="text-sm text-slate-400">Selecciona el modo de práctica deseado:</p>
             <div class="space-y-4 pt-2">
+                <!-- Carpeta Oxisales -->
+                <button onclick="showScreen('oxisalesMenu')" class="w-full py-3 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98] flex items-center justify-center gap-2">
+                    📁 Carpeta: Oxisales
+                </button>
+                <!-- Carpeta Tabla Periódica -->
+                <button onclick="showScreen('tablaPeriodicaMenu')" class="w-full py-3 bg-amber-600 hover:bg-amber-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98] flex items-center justify-center gap-2">
+                    📁 Carpeta: Tabla Periódica
+                </button>
+                <!-- Carpeta Orbitales -->
+                <button onclick="showScreen('orbitalesMenu')" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98] flex items-center justify-center gap-2">
+                    📁 Carpeta: Orbitales
+                </button>
+                <button onclick="showScreen('trimestre1Menu')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Volver
+                </button>
+            </div>
+        </div>
+
+        <!-- Carpeta: Oxisales -->
+        <div id="oxisalesMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto hidden">
+            <h2 class="text-2xl font-bold text-teal-400">📁 Carpeta: Oxisales</h2>
+            <p class="text-sm text-slate-400">Selecciona el modo de práctica:</p>
+            <div class="space-y-4 pt-2">
                 <button onclick="startPractice(1)" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Escribir Nombres
                 </button>
                 <button onclick="startPractice(2)" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Seleccionar Fórmula
                 </button>
+                <button onclick="showScreen('menuScreen')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Volver al Tema 1
+                </button>
+            </div>
+        </div>
+
+        <!-- Carpeta: Tabla Periódica -->
+        <div id="tablaPeriodicaMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto hidden">
+            <h2 class="text-2xl font-bold text-amber-400">📁 Carpeta: Tabla Periódica</h2>
+            <p class="text-sm text-slate-400">Selecciona el juego de la tabla periódica:</p>
+            <div class="space-y-4 pt-2">
                 <button onclick="startPractice(3)" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Ordenar Elementos
                 </button>
@@ -92,8 +126,25 @@
                 <button onclick="startPractice(5)" class="w-full py-4 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Nombra el Elemento
                 </button>
-                <button onclick="showScreen('trimestre1Menu')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
-                    Volver
+                <button onclick="showScreen('menuScreen')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Volver al Tema 1
+                </button>
+            </div>
+        </div>
+
+        <!-- Carpeta: Orbitales -->
+        <div id="orbitalesMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto hidden">
+            <h2 class="text-2xl font-bold text-cyan-400">📁 Carpeta: Orbitales</h2>
+            <p class="text-sm text-slate-400">Selecciona el juego de configuración electrónica:</p>
+            <div class="space-y-4 pt-2">
+                <button onclick="startPractice(6)" class="w-full py-4 bg-cyan-600 hover:bg-cyan-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Escribe Orbitales
+                </button>
+                <button onclick="startPractice(7)" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Identifica Orbitales
+                </button>
+                <button onclick="showScreen('menuScreen')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Volver al Tema 1
                 </button>
             </div>
         </div>
@@ -214,6 +265,38 @@
                 </button>
             </div>
 
+            <!-- Formulario Modo 6: Escribe Orbitales -->
+            <div id="formMode6" class="space-y-3 my-6 hidden">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Configuración electrónica (completa o abreviada con Gas Noble):</label>
+                    <input type="text" id="inputOrbitalConfig" placeholder="Ej: 1s2 2s2 2p6 3s1  o  [Ne] 3s1" autocomplete="off" spellcheck="false"
+                        onkeydown="if(event.key==='Enter') checkMode6()"
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-400 text-slate-100 transition">
+                </div>
+                <button onclick="checkMode6()" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 rounded-lg font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Comprobar Respuesta
+                </button>
+                <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition">
+                    ¿No lo sabes? Ver solución directamente
+                </button>
+            </div>
+
+            <!-- Formulario Modo 7: Identifica Orbitales -->
+            <div id="formMode7" class="space-y-3 my-6 hidden">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre o símbolo del elemento:</label>
+                    <input type="text" id="inputOrbitalIdentify" placeholder="Ej: Sodio o Na" autocomplete="off" spellcheck="false"
+                        onkeydown="if(event.key==='Enter') checkMode7()"
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue-400 text-slate-100 transition">
+                </div>
+                <button onclick="checkMode7()" class="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Comprobar Respuesta
+                </button>
+                <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition">
+                    ¿No lo sabes? Ver solución directamente
+                </button>
+            </div>
+
             <div id="feedbackBox" class="hidden rounded-xl p-4 text-sm space-y-2 mt-4">
             </div>
 
@@ -250,8 +333,15 @@
             { s: 'Cs', n: 'Cesio', z: 55, r: 6, c: 1 }, { s: 'Ba', n: 'Bario', z: 56, r: 6, c: 2 }, 
             { s: 'Tl', n: 'Talio', z: 81, r: 6, c: 13 }, { s: 'Pb', n: 'Plomo', z: 82, r: 6, c: 14 }, { s: 'Bi', n: 'Bismuto', z: 83, r: 6, c: 15 }, { s: 'Po', n: 'Polonio', z: 84, r: 6, c: 16 }, { s: 'At', n: 'Ástato', z: 85, r: 6, c: 17 }, { s: 'Rn', n: 'Radón', z: 86, r: 6, c: 18 },
             { s: 'Fr', n: 'Francio', z: 87, r: 7, c: 1 }, { s: 'Ra', n: 'Radio', z: 88, r: 7, c: 2 },
-            { s: 'Nh', n: 'Nihonio', z: 113, r: 7, c: 13 }, { s: 'Fl', n: 'Flerovio', z: 114, r: 7, c: 14 }, { s: 'Mc', n: 'Moscovio', z: 115, r: 7, c: 15 }, { s: 'Lv', n: 'Livermorio', z: 116, r: 7, c: 16 }, { s: 'Ts', n: 'Teneso', z: 117, r: 7, c: 17 }, { s: 'Og', n: 'Oganesón', z: 118, r: 7, c: 18 }
+            { s: 'Og', n: 'Oganesón', z: 118, r: 7, c: 18 }
         ];
+
+        const orbitalElements = periodicElements.filter(el => {
+            const isGroup1_2 = el.c === 1 || el.c === 2;
+            const isGroup13_18 = el.c >= 13 && el.c <= 18;
+            const isRow4Transition = el.r === 4 && el.c >= 3 && el.c <= 12;
+            return isGroup1_2 || isGroup13_18 || isRow4Transition;
+        });
 
         let currentItem = null;
         let currentElement = null;
@@ -265,8 +355,56 @@
         let currentTile = null;
         let placedGrid = {};
 
+        function getElectronConfig(z) {
+            const orbitals = [
+                { name: '1s', max: 2 }, { name: '2s', max: 2 }, { name: '2p', max: 6 },
+                { name: '3s', max: 2 }, { name: '3p', max: 6 }, { name: '4s', max: 2 },
+                { name: '3d', max: 10 }, { name: '4p', max: 6 }, { name: '5s', max: 2 },
+                { name: '4d', max: 10 }, { name: '5p', max: 6 }, { name: '6s', max: 2 },
+                { name: '4f', max: 14 }, { name: '5d', max: 10 }, { name: '6p', max: 6 },
+                { name: '7s', max: 2 }, { name: '5f', max: 14 }, { name: '6d', max: 10 },
+                { name: '7p', max: 6 }
+            ];
+            let remaining = z;
+            let res = [];
+            for (let orb of orbitals) {
+                if (remaining <= 0) break;
+                let count = Math.min(remaining, orb.max);
+                res.push(`${orb.name}${count}`);
+                remaining -= count;
+            }
+            return res.join(" ");
+        }
+
+        function getNobleGasConfig(z) {
+            const nobleGases = [
+                { symbol: 'Rn', z: 86 },
+                { symbol: 'Xe', z: 54 },
+                { symbol: 'Kr', z: 36 },
+                { symbol: 'Ar', z: 18 },
+                { symbol: 'Ne', z: 10 },
+                { symbol: 'He', z: 2 }
+            ];
+            const ng = nobleGases.find(g => z > g.z);
+            if (!ng) return getElectronConfig(z);
+
+            const fullConfig = getElectronConfig(z);
+            const ngFullConfig = getElectronConfig(ng.z);
+            let remainder = fullConfig.replace(ngFullConfig, '').trim();
+            return `[${ng.symbol}] ${remainder}`;
+        }
+
+        function formatKaTeXConfig(configStr) {
+            let formatted = configStr.replace(/\[([A-Za-z]+)\]/g, "\\text{[$1]} ");
+            return formatted.replace(/([a-zA-Z]+)(\d+)/g, "$1^{$2}");
+        }
+
+        function cleanConfigInput(str) {
+            return str.toLowerCase().replace(/[^a-z0-9]/g, "");
+        }
+
         function showScreen(screenId) {
-            const screens = ['mainMenu', 'trimestre1Menu', 'emptyTrimestreScreen', 'menuScreen', 'quizScreen'];
+            const screens = ['mainMenu', 'trimestre1Menu', 'emptyTrimestreScreen', 'menuScreen', 'oxisalesMenu', 'tablaPeriodicaMenu', 'orbitalesMenu', 'quizScreen'];
             screens.forEach(s => document.getElementById(s).classList.add('hidden'));
             document.getElementById(screenId).classList.remove('hidden');
         }
@@ -293,7 +431,15 @@
         }
 
         function returnToActiveMenu() {
-            showScreen('menuScreen');
+            if (currentMode === 6 || currentMode === 7) {
+                showScreen('orbitalesMenu');
+            } else if (currentMode >= 3 && currentMode <= 5) {
+                showScreen('tablaPeriodicaMenu');
+            } else if (currentMode === 1 || currentMode === 2) {
+                showScreen('oxisalesMenu');
+            } else {
+                showScreen('menuScreen');
+            }
         }
 
         function createTile(elementObj, isSelected) {
@@ -427,10 +573,15 @@
             document.getElementById('feedbackBox').classList.add('hidden');
             document.getElementById('nextBtn').classList.add('hidden');
 
+            document.getElementById('formMode1').classList.add('hidden');
+            document.getElementById('formMode2').classList.add('hidden');
+            document.getElementById('formMode3').classList.add('hidden');
+            document.getElementById('formMode4').classList.add('hidden');
+            document.getElementById('formMode5').classList.add('hidden');
+            document.getElementById('formMode6').classList.add('hidden');
+            document.getElementById('formMode7').classList.add('hidden');
+
             if (currentMode === 1 || currentMode === 2) {
-                document.getElementById('formMode3').classList.add('hidden');
-                document.getElementById('formMode4').classList.add('hidden');
-                document.getElementById('formMode5').classList.add('hidden');
                 document.getElementById('questionHeader').classList.remove('hidden');
                 document.getElementById('inputTrad').value = '';
                 document.getElementById('inputIupac').value = '';
@@ -443,13 +594,11 @@
                     document.getElementById('questionLabel').innerText = "ESCRIBE AMBOS NOMBRES";
                     renderMath(document.getElementById('questionTarget'), currentItem.formula);
                     document.getElementById('formMode1').classList.remove('hidden');
-                    document.getElementById('formMode2').classList.add('hidden');
                 } else {
                     document.getElementById('modeBadge').innerText = "Modo: Seleccionar Fórmula";
                     const useTradName = Math.random() > 0.5;
                     document.getElementById('questionLabel').innerText = useTradName ? "NOM. TRADICIONAL / STOCK" : "NOM. IUPAC / SISTEMA";
                     document.getElementById('questionTarget').innerText = (useTradName ? currentItem.trad[0] : currentItem.iupac[0]).toUpperCase();
-                    document.getElementById('formMode1').classList.add('hidden');
                     document.getElementById('formMode2').classList.remove('hidden');
 
                     const optsContainer = document.getElementById('optionsGrid');
@@ -464,10 +613,6 @@
                     });
                 }
             } else if (currentMode === 3) {
-                document.getElementById('formMode1').classList.add('hidden');
-                document.getElementById('formMode2').classList.add('hidden');
-                document.getElementById('formMode4').classList.add('hidden');
-                document.getElementById('formMode5').classList.add('hidden');
                 document.getElementById('questionHeader').classList.add('hidden');
                 document.getElementById('formMode3').classList.remove('hidden');
                 document.getElementById('modeBadge').innerText = "Ordenar Elementos";
@@ -480,10 +625,6 @@
 
                 updateSortUI();
             } else if (currentMode === 4) {
-                document.getElementById('formMode1').classList.add('hidden');
-                document.getElementById('formMode2').classList.add('hidden');
-                document.getElementById('formMode3').classList.add('hidden');
-                document.getElementById('formMode5').classList.add('hidden');
                 document.getElementById('questionHeader').classList.add('hidden');
                 document.getElementById('formMode4').classList.remove('hidden');
                 document.getElementById('modeBadge').innerText = "Rellenar Tabla Periódica";
@@ -491,10 +632,6 @@
 
                 initMode4();
             } else if (currentMode === 5) {
-                document.getElementById('formMode1').classList.add('hidden');
-                document.getElementById('formMode2').classList.add('hidden');
-                document.getElementById('formMode3').classList.add('hidden');
-                document.getElementById('formMode4').classList.add('hidden');
                 document.getElementById('questionHeader').classList.remove('hidden');
                 document.getElementById('formMode5').classList.remove('hidden');
 
@@ -505,6 +642,34 @@
                 document.getElementById('elemBadge').innerText = "Tabla Periódica";
                 document.getElementById('questionLabel').innerText = "ESCRIBE EL NOMBRE DEL ELEMENTO";
                 document.getElementById('questionTarget').innerHTML = `<div class="text-center"><span class="text-5xl font-black text-amber-300">${currentElement.s}</span><span class="text-xs text-slate-400 block mt-1">Número atómico (Z): ${currentElement.z}</span></div>`;
+            } else if (currentMode === 6) {
+                document.getElementById('questionHeader').classList.remove('hidden');
+                document.getElementById('formMode6').classList.remove('hidden');
+
+                document.getElementById('inputOrbitalConfig').value = '';
+                currentElement = orbitalElements[Math.floor(Math.random() * orbitalElements.length)];
+
+                document.getElementById('modeBadge').innerText = "Escribe Orbitales";
+                document.getElementById('elemBadge').innerText = "Orbitales";
+                document.getElementById('questionLabel').innerText = "ESCRIBE LA CONFIGURACIÓN ELECTRÓNICA";
+                document.getElementById('questionTarget').innerHTML = `<div class="text-center"><span class="text-4xl font-black text-cyan-300">${currentElement.n} (${currentElement.s})</span><span class="text-xs text-slate-400 block mt-1">Número atómico (Z): ${currentElement.z}</span></div>`;
+            } else if (currentMode === 7) {
+                document.getElementById('questionHeader').classList.remove('hidden');
+                document.getElementById('formMode7').classList.remove('hidden');
+
+                document.getElementById('inputOrbitalIdentify').value = '';
+                currentElement = orbitalElements[Math.floor(Math.random() * orbitalElements.length)];
+
+                document.getElementById('modeBadge').innerText = "Identifica Orbitales";
+                document.getElementById('elemBadge').innerText = "Orbitales";
+                document.getElementById('questionLabel').innerText = "¿A QUÉ ELEMENTO CORRESPONDE ESTA CONFIGURACIÓN?";
+                
+                const fullConf = getElectronConfig(currentElement.z);
+                const ngConf = getNobleGasConfig(currentElement.z);
+                const rawConfig = (Math.random() > 0.5 && ngConf !== fullConf) ? ngConf : fullConf;
+
+                const katexConfig = formatKaTeXConfig(rawConfig);
+                renderMath(document.getElementById('questionTarget'), katexConfig);
             }
         }
 
@@ -570,6 +735,34 @@
             showFeedback(isCorrect ? 'green' : 'rose', details);
         }
 
+        function checkMode6() {
+            if (!currentElement) return;
+            const targetFull = getElectronConfig(currentElement.z);
+            const targetNG = getNobleGasConfig(currentElement.z);
+
+            const userVal = cleanConfigInput(document.getElementById('inputOrbitalConfig').value);
+            const isCorrect = (userVal === cleanConfigInput(targetFull) || userVal === cleanConfigInput(targetNG));
+
+            let details = `<div class="space-y-1"><p>Elemento: <span class="text-cyan-300 font-semibold">${currentElement.n} (${currentElement.s})</span></p><p>Configuración Completa: <span class="text-cyan-300 font-semibold">${targetFull}</span></p><p>Abreviada (Gas Noble): <span class="text-cyan-300 font-semibold">${targetNG}</span></p></div>`;
+            
+            showFeedback(isCorrect ? 'green' : 'rose', details);
+        }
+
+        function checkMode7() {
+            if (!currentElement) return;
+            const userVal = cleanStr(document.getElementById('inputOrbitalIdentify').value);
+            const targetName = cleanStr(currentElement.n);
+            const targetSymbol = cleanStr(currentElement.s);
+
+            const isCorrect = (userVal === targetName || userVal === targetSymbol);
+            const targetFull = getElectronConfig(currentElement.z);
+            const targetNG = getNobleGasConfig(currentElement.z);
+
+            let details = `<div class="space-y-1"><p>Elemento: <span class="text-blue-300 font-semibold">${currentElement.n} (${currentElement.s})</span></p><p>Número Atómico (Z): <span class="text-blue-300 font-semibold">${currentElement.z}</span></p><p>Configuración: <span class="text-blue-300 font-semibold">${targetFull}</span> (${targetNG})</p></div>`;
+            
+            showFeedback(isCorrect ? 'green' : 'rose', details);
+        }
+
         function revealSolution() {
             total++; streak = 0;
             document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
@@ -604,6 +797,16 @@
                 showFeedbackDirect(details);
             } else if (currentMode === 5) {
                 let details = `<div class="space-y-1"><p>Elemento: <span class="text-teal-300 font-semibold">${currentElement.n}</span> (${currentElement.s})</p><p>Número Atómico (Z): <span class="text-teal-300 font-semibold">${currentElement.z}</span></p></div>`;
+                showFeedbackDirect(details);
+            } else if (currentMode === 6) {
+                const targetFull = getElectronConfig(currentElement.z);
+                const targetNG = getNobleGasConfig(currentElement.z);
+                let details = `<div class="space-y-1"><p>Elemento: <span class="text-cyan-300 font-semibold">${currentElement.n} (${currentElement.s})</span></p><p>Configuración Completa: <span class="text-cyan-300 font-semibold">${targetFull}</span></p><p>Abreviada (Gas Noble): <span class="text-cyan-300 font-semibold">${targetNG}</span></p></div>`;
+                showFeedbackDirect(details);
+            } else if (currentMode === 7) {
+                const targetFull = getElectronConfig(currentElement.z);
+                const targetNG = getNobleGasConfig(currentElement.z);
+                let details = `<div class="space-y-1"><p>Elemento: <span class="text-blue-300 font-semibold">${currentElement.n} (${currentElement.s})</span></p><p>Número Atómico (Z): <span class="text-blue-300 font-semibold">${currentElement.z}</span></p><p>Configuración: <span class="text-blue-300 font-semibold">${targetFull}</span> (${targetNG})</p></div>`;
                 showFeedbackDirect(details);
             } else {
                 const optsContainer = document.getElementById('optionsGrid');
