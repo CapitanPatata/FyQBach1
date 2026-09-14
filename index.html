@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web FyQ Bachiller</title>
+    <title>Entrenador Extensivo Máximo: Química</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -11,10 +11,10 @@
 <body class="bg-slate-900 text-slate-100 min-h-screen font-sans flex flex-col justify-between select-none">
 
     <header class="bg-slate-800 border-b border-slate-700 py-4 px-6 shadow-md">
-        <div class="max-w-3xl mx-auto flex justify-between items-center">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
             <div>
                 <h1 class="text-xl font-extrabold text-teal-400">Entrenador Extensivo Máximo</h1>
-                <p class="text-xs text-slate-400">Base de datos masiva de Oxisales y Oxoaniones</p>
+                <p class="text-xs text-slate-400">Base de datos química integral</p>
             </div>
             <div class="flex items-center space-x-6">
                 <div class="text-right">
@@ -29,15 +29,15 @@
         </div>
     </header>
 
-    <main class="max-w-xl w-full mx-auto p-4 my-auto">
+    <main class="max-w-3xl w-full mx-auto p-4 my-auto">
         
         <!-- Menú Principal -->
-        <div id="mainMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6">
+        <div id="mainMenu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto">
             <h2 class="text-2xl font-bold text-teal-400">Menú Principal</h2>
             <p class="text-sm text-slate-400">Selecciona el trimestre:</p>
             <div class="space-y-4 pt-2">
                 <button onclick="showScreen('trimestre1Menu')" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
-                    1er Trimestre
+                    1er Trimestre (Oxisales y Tabla)
                 </button>
                 <button onclick="showEmptyTrimestre('2do Trimestre')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     2do Trimestre
@@ -49,11 +49,11 @@
         </div>
 
         <!-- Menú 1er Trimestre -->
-        <div id="trimestre1Menu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
+        <div id="trimestre1Menu" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto hidden">
             <h2 class="text-2xl font-bold text-teal-400">1er Trimestre</h2>
             <div class="space-y-4 pt-2">
                 <button onclick="showScreen('menuScreen')" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
-                    Tema 1
+                    Tema 1: Oxisales y Tabla Periódica
                 </button>
                 <button onclick="showScreen('mainMenu')" class="w-full py-4 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Volver
@@ -61,8 +61,8 @@
             </div>
         </div>
 
-        <!-- Pantalla para 2do y 3er Trimestre (Solo botón volver) -->
-        <div id="emptyTrimestreScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
+        <!-- Pantalla Vacía -->
+        <div id="emptyTrimestreScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto hidden">
             <h2 id="emptyTitle" class="text-2xl font-bold text-teal-400">Trimestre</h2>
             <p class="text-sm text-slate-400">Contenido no disponible todavía.</p>
             <div class="pt-2">
@@ -72,9 +72,9 @@
             </div>
         </div>
 
-        <!-- Menú Original del Código (Tema 1) -->
-        <div id="menuScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 hidden">
-            <h2 class="text-2xl font-bold text-teal-400">Tema 1: Oxisales y Oxoaniones</h2>
+        <!-- Menú Tema 1 -->
+        <div id="menuScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-8 shadow-2xl text-center space-y-6 max-w-xl mx-auto hidden">
+            <h2 class="text-2xl font-bold text-teal-400">Tema 1: Oxisales y Tabla Periódica</h2>
             <p class="text-sm text-slate-400">Selecciona el modo de práctica deseado:</p>
             <div class="space-y-4 pt-2">
                 <button onclick="startPractice(1)" class="w-full py-4 bg-teal-600 hover:bg-teal-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
@@ -83,13 +83,22 @@
                 <button onclick="startPractice(2)" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
                     Modo: Seleccionar Fórmula
                 </button>
+                <button onclick="startPractice(3)" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Modo: Ordenar Elementos
+                </button>
+                <button onclick="startPractice(4)" class="w-full py-4 bg-amber-600 hover:bg-amber-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Modo: Rellenar Tabla Periódica
+                </button>
+                <button onclick="startPractice(5)" class="w-full py-4 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-base text-white shadow-lg transition active:scale-[0.98]">
+                    Modo: Nombra el Elemento
+                </button>
                 <button onclick="showScreen('trimestre1Menu')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
                     Volver
                 </button>
             </div>
         </div>
 
-        <!-- Contenedor del Quiz (Oculto inicialmente) -->
+        <!-- Contenedor del Quiz -->
         <div id="quizScreen" class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-2xl relative hidden">
             
             <div class="flex justify-between items-center mb-6">
@@ -100,22 +109,24 @@
                     <span id="elemBadge" class="text-xs font-semibold bg-slate-700 text-slate-300 px-3 py-1 rounded-md">
                         Categoría
                     </span>
-                    <button onclick="returnToMenu()" class="text-xs font-semibold bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded-md transition">
+                    <button onclick="returnToActiveMenu()" class="text-xs font-semibold bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded-md transition">
                         Menú
                     </button>
                 </div>
             </div>
 
-            <div class="text-center py-4 my-2">
+            <!-- Cabecera de pregunta dinámica -->
+            <div class="text-center py-4 my-2" id="questionHeader">
                 <p class="text-xs text-slate-400 uppercase tracking-widest mb-3 font-semibold" id="questionLabel"></p>
                 <div id="questionTarget" class="text-3xl font-bold text-amber-300 min-h-[4rem] flex items-center justify-center">
                 </div>
             </div>
 
-            <div id="formMode1" class="space-y-3 my-6">
+            <!-- Formulario Modo 1 -->
+            <div id="formMode1" class="space-y-3 my-6 hidden">
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 mb-1">Nomenclatura Tradicional / Stock:</label>
-                    <input type="text" id="inputTrad" placeholder="Ej: sulfato de hierro / hipoyodito de sodio" autocomplete="off" spellcheck="false"
+                    <input type="text" id="inputTrad" placeholder="Ej: sulfato de hierro" autocomplete="off" spellcheck="false"
                         class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-teal-400 text-slate-100 transition">
                 </div>
                 <div>
@@ -131,9 +142,74 @@
                 </button>
             </div>
 
+            <!-- Formulario Modo 2 -->
             <div id="formMode2" class="space-y-3 my-6 hidden">
                 <div id="optionsGrid" class="grid grid-cols-2 gap-3"></div>
                 <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition mt-2">
+                    ¿No lo sabes? Ver solución directamente
+                </button>
+            </div>
+
+            <!-- Formulario Modo 3: Ordenar Elementos -->
+            <div id="formMode3" class="space-y-5 my-2 hidden">
+                <p class="text-xs text-slate-400 text-center mb-1">Toca los elementos de abajo para ordenarlos aquí arriba de menor a mayor número atómico (Z).</p>
+                
+                <div class="p-3 bg-slate-900 border-2 border-dashed border-slate-600 rounded-xl min-h-[5.5rem] flex flex-wrap gap-2 justify-center items-center" id="sortTarget">
+                </div>
+                
+                <div class="flex items-center justify-center">
+                    <span class="text-slate-600 text-xs uppercase tracking-widest">Opciones disponibles</span>
+                </div>
+
+                <div class="flex flex-wrap gap-3 justify-center min-h-[4rem]" id="sortSource">
+                </div>
+
+                <div class="pt-4 space-y-3">
+                    <button id="checkSortBtn" onclick="checkMode3()" class="hidden w-full py-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                        Comprobar Orden
+                    </button>
+                    <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition">
+                        ¿No lo sabes? Ver solución
+                    </button>
+                </div>
+            </div>
+
+            <!-- Formulario Modo 4: Rellenar Tabla Periódica -->
+            <div id="formMode4" class="space-y-4 my-2 hidden">
+                <p class="text-xs text-slate-400 text-center">Pulsa en un hueco vacío de la Tabla Periódica para colocar la ficha actual.</p>
+                
+                <div class="overflow-x-auto pb-2">
+                    <div id="ptableGrid" class="grid grid-cols-[repeat(18,minmax(1.75rem,1fr))] gap-0.5 min-w-[34rem] bg-slate-950 p-2 rounded-xl border border-slate-700">
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex flex-col items-center justify-center min-h-[6rem]">
+                    <span class="text-xs text-slate-400 block text-center mb-2 font-semibold uppercase tracking-wider">Ficha actual:</span>
+                    <div id="tableTilesSource" class="flex flex-col items-center justify-center gap-1"></div>
+                </div>
+
+                <div class="pt-2 space-y-3">
+                    <button id="checkTableBtn" onclick="checkMode4()" class="hidden w-full py-3 bg-amber-600 hover:bg-amber-500 rounded-lg font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                        Comprobar Tabla
+                    </button>
+                    <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition">
+                        ¿No lo sabes? Ver solución
+                    </button>
+                </div>
+            </div>
+
+            <!-- Formulario Modo 5: Nombra el Elemento -->
+            <div id="formMode5" class="space-y-3 my-6 hidden">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre del elemento:</label>
+                    <input type="text" id="inputElementName" placeholder="Ej: Sodio, Hierro, Oxígeno..." autocomplete="off" spellcheck="false"
+                        onkeydown="if(event.key==='Enter') checkMode5()"
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-teal-400 text-slate-100 transition">
+                </div>
+                <button onclick="checkMode5()" class="w-full py-3 bg-purple-600 hover:bg-purple-500 rounded-lg font-bold text-sm text-white shadow-lg transition active:scale-[0.98]">
+                    Comprobar Respuesta
+                </button>
+                <button onclick="revealSolution()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs text-slate-300 transition">
                     ¿No lo sabes? Ver solución directamente
                 </button>
             </div>
@@ -150,178 +226,48 @@
     </main>
 
     <footer class="text-center py-4 text-xs text-slate-500">
-        Entrenador Extensivo Máximo • Base de datos de Oxisales y Oxoaniones
+        Entrenador Extensivo Máximo
     </footer>
 
     <script>
         const db = [
-            // ================= OXOANIONES =================
             { formula: "\\mathrm{IO}^-", category: "Oxoanión", trad: ["hipoyodito"], iupac: ["oxidoyodato", "monoxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{IO}_2^-", category: "Oxoanión", trad: ["yodito"], iupac: ["dioxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{IO}_3^-", category: "Oxoanión", trad: ["yodato"], iupac: ["trioxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{IO}_4^-", category: "Oxoanión", trad: ["periodato"], iupac: ["tetraoxidoyodato"], options: ["\\mathrm{IO}^-", "\\mathrm{IO}_2^-", "\\mathrm{IO}_3^-", "\\mathrm{IO}_4^-"] },
-            { formula: "\\mathrm{ClO}^-", category: "Oxoanión", trad: ["hipoclorito"], iupac: ["oxidoclorato", "monoxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{ClO}_2^-", category: "Oxoanión", trad: ["clorito"], iupac: ["dioxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{ClO}_3^-", category: "Oxoanión", trad: ["clorato"], iupac: ["trioxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{ClO}_4^-", category: "Oxoanión", trad: ["perclorato"], iupac: ["tetraoxidoclorato"], options: ["\\mathrm{ClO}^-", "\\mathrm{ClO}_2^-", "\\mathrm{ClO}_3^-", "\\mathrm{ClO}_4^-"] },
-            { formula: "\\mathrm{BrO}^-", category: "Oxoanión", trad: ["hipobromito"], iupac: ["oxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{BrO}_2^-", category: "Oxoanión", trad: ["bromito"], iupac: ["dioxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{BrO}_3^-", category: "Oxoanión", trad: ["bromato"], iupac: ["trioxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{BrO}_4^-", category: "Oxoanión", trad: ["perbromato"], iupac: ["tetraoxidobromato"], options: ["\\mathrm{BrO}^-", "\\mathrm{BrO}_2^-", "\\mathrm{BrO}_3^-", "\\mathrm{BrO}_4^-"] },
-            { formula: "\\mathrm{SO}_3^{2-}", category: "Oxoanión", trad: ["sulfito"], iupac: ["trioxidosulfato"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{HSO}_4^-"] },
-            { formula: "\\mathrm{SO}_4^{2-}", category: "Oxoanión", trad: ["sulfato"], iupac: ["tetraoxidosulfato"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{HSO}_4^-"] },
-            { formula: "\\mathrm{S}_2\\mathrm{O}_3^{2-}", category: "Oxoanión", trad: ["tiosulfato"], iupac: ["trioxidotiosulfato", "trioxidodisulfato"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{S}_2\\mathrm{O}_7^{2-}"] },
-            { formula: "\\mathrm{S}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["disulfato", "pirosulfato"], iupac: ["heptaoxidodisulfato"], options: ["\\mathrm{SO}_4^{2-}", "\\mathrm{S}_2\\mathrm{O}_3^{2-}", "\\mathrm{S}_2\\mathrm{O}_7^{2-}", "\\mathrm{SO}_3^{2-}"] },
-            { formula: "\\mathrm{HSO}_4^-", category: "Oxoanión Ácido", trad: ["sulfato acido", "bisulfato"], iupac: ["hidrogeno(tetraoxidosulfato)", "hidrogenosulfato"], options: ["\\mathrm{SO}_4^{2-}", "\\mathrm{HSO}_4^-", "\\mathrm{HSO}_3^-", "\\mathrm{S}_2\\mathrm{O}_8^{2-}"] },
-            { formula: "\\mathrm{HSO}_3^-", category: "Oxoanión Ácido", trad: ["sulfito acido", "bisulfito"], iupac: ["hidrogeno(trioxidosulfato)", "hidrogenosulfito"], options: ["\\mathrm{SO}_3^{2-}", "\\mathrm{HSO}_3^-", "\\mathrm{HSO}_4^-", "\\mathrm{S}^{2-}"] },
-            { formula: "\\mathrm{NO}_2^-", category: "Oxoanión", trad: ["nitrito"], iupac: ["dioxidonitrato"], options: ["\\mathrm{NO}_2^-", "\\mathrm{NO}_3^-", "\\mathrm{NO}^-", "\\mathrm{NH}_4^+"] },
-            { formula: "\\mathrm{NO}_3^-", category: "Oxoanión", trad: ["nitrato"], iupac: ["trioxidonitrato"], options: ["\\mathrm{NO}_2^-", "\\mathrm{NO}_3^-", "\\mathrm{NO}^-", "\\mathrm{NH}_4^+"] },
-            { formula: "\\mathrm{CO}_3^{2-}", category: "Oxoanión", trad: ["carbonato"], iupac: ["trioxidocarbonato"], options: ["\\mathrm{CO}_2^{2-}", "\\mathrm{CO}_3^{2-}", "\\mathrm{HCO}_3^-", "\\mathrm{CO}_4^{2-}"] },
-            { formula: "\\mathrm{HCO}_3^-", category: "Oxoanión Ácido", trad: ["carbonato acido", "bicarbonato"], iupac: ["hidrogeno(trioxidocarbonato)", "hidrogenocarbonato"], options: ["\\mathrm{CO}_3^{2-}", "\\mathrm{HCO}_3^-", "\\mathrm{H}_2\\mathrm{CO}_3", "\\mathrm{CO}_2"] },
-            { formula: "\\mathrm{PO}_3^{3-}", category: "Oxoanión", trad: ["fosfito", "ortofosfito"], iupac: ["trioxidofosfato"], options: ["\\mathrm{PO}_3^{3-}", "\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_3^{2-}", "\\mathrm{HPO}_4^{2-}"] },
-            { formula: "\\mathrm{PO}_4^{3-}", category: "Oxoanión", trad: ["fosfato", "ortofosfato"], iupac: ["tetraoxidofosfato"], options: ["\\mathrm{PO}_3^{3-}", "\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-"] },
-            { formula: "\\mathrm{HPO}_4^{2-}", category: "Oxoanión Ácido", trad: ["monohidrogenofosfato", "fosfato monoacido"], iupac: ["hidrogeno(tetraoxidofosfato)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-", "\\mathrm{P}_2\\mathrm{O}_7^{4-}"] },
-            { formula: "\\mathrm{H}_2\\mathrm{PO}_4^-", category: "Oxoanión Ácido", trad: ["dihidrogenofosfato", "fosfato diacido"], iupac: ["dihidrogeno(tetraoxidofosfato)"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{H}_2\\mathrm{PO}_4^-", "\\mathrm{PO}_3^-"] },
-            { formula: "\\mathrm{P}_2\\mathrm{O}_7^{4-}", category: "Oxoanión", trad: ["difosfato", "pirofosfato"], iupac: ["heptaoxidodifosfato"], options: ["\\mathrm{PO}_4^{3-}", "\\mathrm{P}_2\\mathrm{O}_7^{4-}", "\\mathrm{HPO}_4^{2-}", "\\mathrm{PO}_3^{3-}"] },
-            { formula: "\\mathrm{AsO}_3^{3-}", category: "Oxoanión", trad: ["arsenito"], iupac: ["trioxidoarseniato"], options: ["\\mathrm{AsO}_3^{3-}", "\\mathrm{AsO}_4^{3-}", "\\mathrm{HAsO}_3^{2-}", "\\mathrm{As}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{AsO}_4^{3-}", category: "Oxoanión", trad: ["arseniato"], iupac: ["tetraoxidoarseniato"], options: ["\\mathrm{AsO}_3^{3-}", "\\mathrm{AsO}_4^{3-}", "\\mathrm{H}_2\\mathrm{AsO}_4^-", "\\mathrm{As}_2\\mathrm{O}_5"] },
-            { formula: "\\mathrm{SbO}_4^{3-}", category: "Oxoanión", trad: ["antimoniato"], iupac: ["tetraoxidoantimoniato"], options: ["\\mathrm{SbO}_4^{3-}", "\\mathrm{SbO}_3^{3-}", "\\mathrm{Sb}_2\\mathrm{O}_5", "\\mathrm{SbO}_3^-"] },
-            { formula: "\\mathrm{SeO}_3^{2-}", category: "Oxoanión", trad: ["selenito"], iupac: ["trioxidoseleniato"], options: ["\\mathrm{SeO}_3^{2-}", "\\mathrm{SeO}_4^{2-}", "\\mathrm{Se}^{2-}", "\\mathrm{HSeO}_3^-"] },
-            { formula: "\\mathrm{SeO}_4^{2-}", category: "Oxoanión", trad: ["selenato"], iupac: ["tetraoxidoseleniato"], options: ["\\mathrm{SeO}_3^{2-}", "\\mathrm{SeO}_4^{2-}", "\\mathrm{Se}^{2-}", "\\mathrm{HSeO}_4^-"] },
-            { formula: "\\mathrm{TeO}_3^{2-}", category: "Oxoanión", trad: ["telurito"], iupac: ["trioxidotelurato"], options: ["\\mathrm{TeO}_3^{2-}", "\\mathrm{TeO}_4^{2-}", "\\mathrm{Te}^{2-}", "\\mathrm{HTeO}_3^-"] },
-            { formula: "\\mathrm{TeO}_4^{2-}", category: "Oxoanión", trad: ["telurato"], iupac: ["tetraoxidotelurato"], options: ["\\mathrm{TeO}_3^{2-}", "\\mathrm{TeO}_4^{2-}", "\\mathrm{Te}^{2-}", "\\mathrm{HTeO}_4^-"] },
-            { formula: "\\mathrm{SiO}_3^{2-}", category: "Oxoanión", trad: ["silicato", "metasilicato"], iupac: ["trioxidosilicato"], options: ["\\mathrm{SiO}_3^{2-}", "\\mathrm{SiO}_4^{4-}", "\\mathrm{Si}^{4-}", "\\mathrm{HSiO}_3^-"] },
-            { formula: "\\mathrm{SiO}_4^{4-}", category: "Oxoanión", trad: ["ortosilicato"], iupac: ["tetraoxidosilicato"], options: ["\\mathrm{SiO}_3^{2-}", "\\mathrm{SiO}_4^{4-}", "\\mathrm{Si}^{4-}", "\\mathrm{HSiO}_3^-"] },
-            { formula: "\\mathrm{BO}_3^{3-}", category: "Oxoanión", trad: ["borato", "ortoborato"], iupac: ["trioxidoborato"], options: ["\\mathrm{BO}_3^{3-}", "\\mathrm{BO}_2^-", "\\mathrm{B}_4\\mathrm{O}_7^{2-}", "\\mathrm{HBO}_3^{2-}"] },
-            { formula: "\\mathrm{B}_4\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["tetraborato", "piroborato"], iupac: ["heptaoxidotetraborato"], options: ["\\mathrm{BO}_3^{3-}", "\\mathrm{B}_4\\mathrm{O}_7^{2-}", "\\mathrm{BO}_2^-", "\\mathrm{B}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{MnO}_4^-", category: "Oxoanión", trad: ["permanganato"], iupac: ["tetraoxidomanganato"], options: ["\\mathrm{MnO}_4^-", "\\mathrm{MnO}_4^{2-}", "\\mathrm{MnO}_3^-", "\\mathrm{MnO}_2"] },
-            { formula: "\\mathrm{MnO}_4^{2-}", category: "Oxoanión", trad: ["manganato"], iupac: ["tetraoxidomanganato"], options: ["\\mathrm{MnO}_4^-", "\\mathrm{MnO}_4^{2-}", "\\mathrm{MnO}_3^-", "\\mathrm{MnO}_2"] },
-            { formula: "\\mathrm{CrO}_4^{2-}", category: "Oxoanión", trad: ["cromato"], iupac: ["tetraoxidocromato"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
-            { formula: "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", category: "Oxoanión", trad: ["dicromato"], iupac: ["heptaoxidodicromato"], options: ["\\mathrm{CrO}_4^{2-}", "\\mathrm{Cr}_2\\mathrm{O}_7^{2-}", "\\mathrm{CrO}_3", "\\mathrm{CrO}_2^-"] },
+            { formula: "\\mathrm{NaClO}", category: "Oxisal (Na)", trad: ["hipoclorito de sodio"], iupac: ["oxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
+            { formula: "\\mathrm{Fe(NO}_3)_3", category: "Oxisal (Fe III)", trad: ["nitrato de hierro(iii)", "nitrato ferrico"], iupac: ["tris(trioxidonitrato) de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] }
+        ]; 
 
-            // ================= OXISALES NEUTRALES (VALENCIA FIJA) =================
-            { formula: "\\mathrm{NaClO}", category: "Oxisal (Na)", trad: ["hipoclorito de sodio", "hipoclorito sodico"], iupac: ["oxidoclorato de sodio", "monoxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
-            { formula: "\\mathrm{NaClO}_2", category: "Oxisal (Na)", trad: ["clorito de sodio", "clorito sodico"], iupac: ["dioxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
-            { formula: "\\mathrm{NaClO}_3", category: "Oxisal (Na)", trad: ["clorato de sodio", "clorato sodico"], iupac: ["trioxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
-            { formula: "\\mathrm{NaClO}_4", category: "Oxisal (Na)", trad: ["perclorato de sodio", "perclorato sodico"], iupac: ["tetraoxidoclorato de sodio"], options: ["\\mathrm{NaClO}", "\\mathrm{NaClO}_2", "\\mathrm{NaClO}_3", "\\mathrm{NaClO}_4"] },
-            { formula: "\\mathrm{NaNO}_2", category: "Oxisal (Na)", trad: ["nitrito de sodio", "nitrito sodico"], iupac: ["dioxidonitrato de sodio"], options: ["\\mathrm{NaNO}_2", "\\mathrm{NaNO}_3", "\\mathrm{Na}_3\\mathrm{N}", "\\mathrm{NaOH}"] },
-            { formula: "\\mathrm{NaNO}_3", category: "Oxisal (Na)", trad: ["nitrato de sodio", "nitrato sodico"], iupac: ["trioxidonitrato de sodio"], options: ["\\mathrm{NaNO}_2", "\\mathrm{NaNO}_3", "\\mathrm{Na}_3\\mathrm{N}", "\\mathrm{NaOH}"] },
-            { formula: "\\mathrm{Na}_2\\mathrm{SO}_3", category: "Oxisal (Na)", trad: ["sulfito de sodio", "sulfito sodico"], iupac: ["trioxidosulfato de disodio", "trioxidosulfato de sodio"], options: ["\\mathrm{Na}_2\\mathrm{SO}_3", "\\mathrm{Na}_2\\mathrm{SO}_4", "\\mathrm{Na}_2\\mathrm{S}_2\\mathrm{O}_3", "\\mathrm{Na}_2\\mathrm{S}"] },
-            { formula: "\\mathrm{Na}_2\\mathrm{SO}_4", category: "Oxisal (Na)", trad: ["sulfato de sodio", "sulfato sodico"], iupac: ["tetraoxidosulfato de disodio", "tetraoxidosulfato de sodio"], options: ["\\mathrm{Na}_2\\mathrm{SO}_3", "\\mathrm{Na}_2\\mathrm{SO}_4", "\\mathrm{Na}_2\\mathrm{S}_2\\mathrm{O}_3", "\\mathrm{Na}_2\\mathrm{S}"] },
-            { formula: "\\mathrm{Na}_2\\mathrm{CO}_3", category: "Oxisal (Na)", trad: ["carbonato de sodio", "carbonato sodico"], iupac: ["trioxidocarbonato de disodio", "trioxidocarbonato de sodio"], options: ["\\mathrm{Na}_2\\mathrm{CO}_3", "\\mathrm{NaHCO}_3", "\\mathrm{Na}_2\\mathrm{SO}_4", "\\mathrm{Na}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Na}_3\\mathrm{PO}_4", category: "Oxisal (Na)", trad: ["fosfato de sodio", "fosfato sodico", "ortofosfato de sodio"], iupac: ["tetraoxidofosfato de trisodio", "tetraoxidofosfato de sodio"], options: ["\\mathrm{Na}_3\\mathrm{PO}_4", "\\mathrm{Na}_2\\mathrm{HPO}_4", "\\mathrm{NaH}_2\\mathrm{PO}_4", "\\mathrm{Na}_3\\mathrm{PO}_3"] },
-            { formula: "\\mathrm{Na}_2\\mathrm{SiO}_3", category: "Oxisal (Na)", trad: ["silicato de sodio", "metasilicato de sodio"], iupac: ["trioxidosilicato de disodio", "trioxidosilicato de sodio"], options: ["\\mathrm{Na}_2\\mathrm{SiO}_3", "\\mathrm{Na}_4\\mathrm{SiO}_4", "\\mathrm{Na}_2\\mathrm{SO}_3", "\\mathrm{NaCl}"] },
-            { formula: "\\mathrm{NaBO}_2", category: "Oxisal (Na)", trad: ["metaborato de sodio"], iupac: ["dioxidoborato de sodio"], options: ["\\mathrm{NaBO}_2", "\\mathrm{Na}_3\\mathrm{BO}_3", "\\mathrm{Na}_2\\mathrm{B}_4\\mathrm{O}_7", "\\mathrm{NaCl}"] },
-            { formula: "\\mathrm{KClO}", category: "Oxisal (K)", trad: ["hipoclorito de potasio", "hipoclorito potasico"], iupac: ["oxidoclorato de potasio"], options: ["\\mathrm{KClO}", "\\mathrm{KClO}_3", "\\mathrm{KCl}", "\\mathrm{KClO}_4"] },
-            { formula: "\\mathrm{KClO}_3", category: "Oxisal (K)", trad: ["clorato de potasio", "clorato potasico"], iupac: ["trioxidoclorato de potasio"], options: ["\\mathrm{KClO}", "\\mathrm{KClO}_2", "\\mathrm{KClO}_3", "\\mathrm{KClO}_4"] },
-            { formula: "\\mathrm{KClO}_4", category: "Oxisal (K)", trad: ["perclorato de potasio", "perclorato potasico"], iupac: ["tetraoxidoclorato de potasio"], options: ["\\mathrm{KClO}", "\\mathrm{KClO}_3", "\\mathrm{KClO}_4", "\\mathrm{KCl}"] },
-            { formula: "\\mathrm{KNO}_2", category: "Oxisal (K)", trad: ["nitrito de potasio", "nitrito potasico"], iupac: ["dioxidonitrato de potasio"], options: ["\\mathrm{KNO}_2", "\\mathrm{KNO}_3", "\\mathrm{K}_3\\mathrm{N}", "\\mathrm{KOH}"] },
-            { formula: "\\mathrm{KNO}_3", category: "Oxisal (K)", trad: ["nitrato de potasio", "nitrato potasico"], iupac: ["trioxidonitrato de potasio"], options: ["\\mathrm{KNO}_2", "\\mathrm{KNO}_3", "\\mathrm{K}_3\\mathrm{N}", "\\mathrm{KOH}"] },
-            { formula: "\\mathrm{K}_2\\mathrm{SO}_3", category: "Oxisal (K)", trad: ["sulfito de potasio", "sulfito potasico"], iupac: ["trioxidosulfato de dipotasio", "trioxidosulfato de potasio"], options: ["\\mathrm{K}_2\\mathrm{SO}_3", "\\mathrm{K}_2\\mathrm{SO}_4", "\\mathrm{K}_2\\mathrm{S}_2\\mathrm{O}_3", "\\mathrm{KS}"] },
-            { formula: "\\mathrm{K}_2\\mathrm{SO}_4", category: "Oxisal (K)", trad: ["sulfato de potasio", "sulfato potasico"], iupac: ["tetraoxidosulfato de dipotasio", "tetraoxidosulfato de potasio"], options: ["\\mathrm{K}_2\\mathrm{SO}_3", "\\mathrm{K}_2\\mathrm{SO}_4", "\\mathrm{K}_2\\mathrm{S}_2\\mathrm{O}_3", "\\mathrm{KS}"] },
-            { formula: "\\mathrm{K}_2\\mathrm{CO}_3", category: "Oxisal (K)", trad: ["carbonato de potasio", "carbonato potasico"], iupac: ["trioxidocarbonato de dipotasio", "trioxidocarbonato de potasio"], options: ["\\mathrm{K}_2\\mathrm{CO}_3", "\\mathrm{KHCO}_3", "\\mathrm{K}_2\\mathrm{SO}_4", "\\mathrm{K}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{K}_3\\mathrm{PO}_4", category: "Oxisal (K)", trad: ["fosfato de potasio", "fosfato potasico"], iupac: ["tetraoxidofosfato de tripotasio", "tetraoxidofosfato de potasio"], options: ["\\mathrm{K}_3\\mathrm{PO}_4", "\\mathrm{K}_2\\mathrm{HPO}_4", "\\mathrm{KH}_2\\mathrm{PO}_4", "\\mathrm{K}_3\\mathrm{PO}_3"] },
-            { formula: "\\mathrm{KMnO}_4", category: "Oxisal (K)", trad: ["permanganato de potasio", "permanganato potasico"], iupac: ["tetraoxidomanganato de potasio"], options: ["\\mathrm{KMnO}_4", "\\mathrm{K}_2\\mathrm{MnO}_4", "\\mathrm{KMnO}_3", "\\mathrm{Mn}_2\\mathrm{O}_7"] },
-            { formula: "\\mathrm{K}_2\\mathrm{MnO}_4", category: "Oxisal (K)", trad: ["manganato de potasio", "manganato potasico"], iupac: ["tetraoxidomanganato de dipotasio", "tetraoxidomanganato de potasio"], options: ["\\mathrm{KMnO}_4", "\\mathrm{K}_2\\mathrm{MnO}_4", "\\mathrm{KMnO}_3", "\\mathrm{Mn}_2\\mathrm{O}_7"] },
-            { formula: "\\mathrm{K}_2\\mathrm{CrO}_4", category: "Oxisal (K)", trad: ["cromato de potasio", "cromato potasico"], iupac: ["tetraoxidocromato de dipotasio", "tetraoxidocromato de potasio"], options: ["\\mathrm{K}_2\\mathrm{CrO}_4", "\\mathrm{K}_2\\mathrm{Cr}_2\\mathrm{O}_7", "\\mathrm{KCrO}_2", "\\mathrm{CrO}_3"] },
-            { formula: "\\mathrm{K}_2\\mathrm{Cr}_2\\mathrm{O}_7", category: "Oxisal (K)", trad: ["dicromato de potasio", "dicromato potasico"], iupac: ["heptaoxidodicromato de dipotasio", "heptaoxidodicromato de potasio"], options: ["\\mathrm{K}_2\\mathrm{CrO}_4", "\\mathrm{K}_2\\mathrm{Cr}_2\\mathrm{O}_7", "\\mathrm{KCrO}_2", "\\mathrm{Cr}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Ca(ClO}_3)_2", category: "Oxisal (Ca)", trad: ["clorato de calcio", "clorato calcico"], iupac: ["bis(trioxidoclorato) de calcio", "trioxidoclorato de calcio"], options: ["\\mathrm{Ca(ClO}_3)_2", "\\mathrm{Ca(ClO}_4)_2", "\\mathrm{CaCl}_2", "\\mathrm{Ca(ClO}_2)_2"] },
-            { formula: "\\mathrm{Ca(ClO}_4)_2", category: "Oxisal (Ca)", trad: ["perclorato de calcio", "perclorato calcico"], iupac: ["bis(tetraoxidoclorato) de calcio", "tetraoxidoclorato de calcio"], options: ["\\mathrm{Ca(ClO}_3)_2", "\\mathrm{Ca(ClO}_4)_2", "\\mathrm{CaCl}_2", "\\mathrm{Ca(ClO}_2)_2"] },
-            { formula: "\\mathrm{Ca(NO}_2)_2", category: "Oxisal (Ca)", trad: ["nitrito de calcio", "nitrito calcico"], iupac: ["bis(dioxidonitrato) de calcio", "dioxidonitrato de calcio"], options: ["\\mathrm{Ca(NO}_2)_2", "\\mathrm{Ca(NO}_3)_2", "\\mathrm{Ca}_3\\mathrm{N}_2", "\\mathrm{CaO}"] },
-            { formula: "\\mathrm{Ca(NO}_3)_2", category: "Oxisal (Ca)", trad: ["nitrato de calcio", "nitrato calcico"], iupac: ["bis(trioxidonitrato) de calcio", "trioxidonitrato de calcio"], options: ["\\mathrm{Ca(NO}_2)_2", "\\mathrm{Ca(NO}_3)_2", "\\mathrm{Ca}_3\\mathrm{N}_2", "\\mathrm{CaO}"] },
-            { formula: "\\mathrm{CaSO}_3", category: "Oxisal (Ca)", trad: ["sulfito de calcio", "sulfito calcico"], iupac: ["trioxidosulfato de calcio"], options: ["\\mathrm{CaSO}_3", "\\mathrm{CaSO}_4", "\\mathrm{Ca(HSO}_4)_2", "\\mathrm{CaS}"] },
-            { formula: "\\mathrm{CaSO}_4", category: "Oxisal (Ca)", trad: ["sulfato de calcio", "sulfato calcico"], iupac: ["tetraoxidosulfato de calcio"], options: ["\\mathrm{CaSO}_3", "\\mathrm{CaSO}_4", "\\mathrm{Ca(HSO}_4)_2", "\\mathrm{CaS}"] },
-            { formula: "\\mathrm{CaCO}_3", category: "Oxisal (Ca)", trad: ["carbonato de calcio", "carbonato calcico"], iupac: ["trioxidocarbonato de calcio"], options: ["\\mathrm{CaCO}_3", "\\mathrm{Ca(HCO}_3)_2", "\\mathrm{CaO}", "\\mathrm{CaC}_2"] },
-            { formula: "\\mathrm{Ca}_3(\\mathrm{PO}_4)_2", category: "Oxisal (Ca)", trad: ["fosfato de calcio", "fosfato calcico"], iupac: ["bis(tetraoxidofosfato) de tricalcio", "tetraoxidofosfato de calcio"], options: ["\\mathrm{Ca}_3(\\mathrm{PO}_4)_2", "\\mathrm{CaHPO}_4", "\\mathrm{Ca}(\\mathrm{H}_2\\mathrm{PO}_4)_2", "\\mathrm{Ca}_3\\mathrm{P}_2"] },
-            { formula: "\\mathrm{CaSiO}_3", category: "Oxisal (Ca)", trad: ["silicato de calcio", "metasilicato de calcio"], iupac: ["trioxidosilicato de calcio"], options: ["\\mathrm{CaSiO}_3", "\\mathrm{Ca}_2\\mathrm{SiO}_4", "\\mathrm{CaSO}_3", "\\mathrm{CaCl}_2"] },
-            { formula: "\\mathrm{CaCrO}_4", category: "Oxisal (Ca)", trad: ["cromato de calcio", "cromato calcico"], iupac: ["tetraoxidocromato de calcio"], options: ["\\mathrm{CaCrO}_4", "\\mathrm{CaCr}_2\\mathrm{O}_7", "\\mathrm{CaSO}_4", "\\mathrm{CaO}"] },
-            { formula: "\\mathrm{MgSO}_3", category: "Oxisal (Mg)", trad: ["sulfito de magnesio", "sulfito magnesico"], iupac: ["trioxidosulfato de magnesio"], options: ["\\mathrm{MgSO}_3", "\\mathrm{MgSO}_4", "\\mathrm{MgCO}_3", "\\mathrm{MgS}"] },
-            { formula: "\\mathrm{MgSO}_4", category: "Oxisal (Mg)", trad: ["sulfato de magnesio", "sulfato magnesico"], iupac: ["tetraoxidosulfato de magnesio"], options: ["\\mathrm{MgSO}_3", "\\mathrm{MgSO}_4", "\\mathrm{MgCO}_3", "\\mathrm{MgS}"] },
-            { formula: "\\mathrm{MgCO}_3", category: "Oxisal (Mg)", trad: ["carbonato de magnesio", "carbonato magnesico"], iupac: ["trioxidocarbonato de magnesio"], options: ["\\mathrm{MgSO}_4", "\\mathrm{MgCO}_3", "\\mathrm{Mg(HCO}_3)_2", "\\mathrm{MgO}"] },
-            { formula: "\\mathrm{Mg(NO}_3)_2", category: "Oxisal (Mg)", trad: ["nitrato de magnesio", "nitrato magnesico"], iupac: ["bis(trioxidonitrato) de magnesio", "trioxidonitrato de magnesio"], options: ["\\mathrm{Mg(NO}_3)_2", "\\mathrm{MgSO}_4", "\\mathrm{Mg(NO}_2)_2", "\\mathrm{MgO}"] },
-            { formula: "\\mathrm{Mg}_3(\\mathrm{PO}_4)_2", category: "Oxisal (Mg)", trad: ["fosfato de magnesio", "fosfato magnesico"], iupac: ["bis(tetraoxidofosfato) de trimagnesio", "tetraoxidofosfato de magnesio"], options: ["\\mathrm{Mg}_3(\\mathrm{PO}_4)_2", "\\mathrm{MgHPO}_4", "\\mathrm{MgSO}_4", "\\mathrm{Mg}_3\\mathrm{P}_2"] },
-            { formula: "\\mathrm{Li}_2\\mathrm{SO}_4", category: "Oxisal (Li)", trad: ["sulfato de litio", "sulfato litico"], iupac: ["tetraoxidosulfato de dilitio", "tetraoxidosulfato de litio"], options: ["\\mathrm{Li}_2\\mathrm{SO}_4", "\\mathrm{Li}_2\\mathrm{SO}_3", "\\mathrm{LiNO}_3", "\\mathrm{Li}_2\\mathrm{S}"] },
-            { formula: "\\mathrm{Li}_2\\mathrm{CO}_3", category: "Oxisal (Li)", trad: ["carbonato de litio", "carbonato litico"], iupac: ["trioxidocarbonato de dilitio", "trioxidocarbonato de litio"], options: ["\\mathrm{Li}_2\\mathrm{CO}_3", "\\mathrm{LiHCO}_3", "\\mathrm{Li}_2\\mathrm{SO}_4", "\\mathrm{LiNO}_3"] },
-            { formula: "\\mathrm{LiNO}_3", category: "Oxisal (Li)", trad: ["nitrato de litio", "nitrato litico"], iupac: ["trioxidonitrato de litio"], options: ["\\mathrm{Li}_2\\mathrm{CO}_3", "\\mathrm{LiNO}_2", "\\mathrm{LiNO}_3", "\\mathrm{Li}_3\\mathrm{N}"] },
-            { formula: "\\mathrm{Li}_3\\mathrm{PO}_4", category: "Oxisal (Li)", trad: ["fosfato de litio", "fosfato litico"], iupac: ["tetraoxidofosfato de trilitio", "tetraoxidofosfato de litio"], options: ["\\mathrm{Li}_3\\mathrm{PO}_4", "\\mathrm{Li}_2\\mathrm{HPO}_4", "\\mathrm{Li}_2\\mathrm{SO}_4", "\\mathrm{Li}_3\\mathrm{P}"] },
-            { formula: "\\mathrm{BaSO}_3", category: "Oxisal (Ba)", trad: ["sulfito de bario", "sulfito barico"], iupac: ["trioxidosulfato de bario"], options: ["\\mathrm{BaSO}_3", "\\mathrm{BaSO}_4", "\\mathrm{BaCO}_3", "\\mathrm{BaCl}_2"] },
-            { formula: "\\mathrm{BaSO}_4", category: "Oxisal (Ba)", trad: ["sulfato de bario", "sulfato barico"], iupac: ["tetraoxidosulfato de bario"], options: ["\\mathrm{BaSO}_3", "\\mathrm{BaSO}_4", "\\mathrm{BaCO}_3", "\\mathrm{BaCl}_2"] },
-            { formula: "\\mathrm{Ba(NO}_3)_2", category: "Oxisal (Ba)", trad: ["nitrato de bario", "nitrato barico"], iupac: ["bis(trioxidonitrato) de bario", "trioxidonitrato de bario"], options: ["\\mathrm{Ba(NO}_2)_2", "\\mathrm{Ba(NO}_3)_2", "\\mathrm{BaSO}_4", "\\mathrm{BaO}"] },
-            { formula: "\\mathrm{BaCO}_3", category: "Oxisal (Ba)", trad: ["carbonato de bario", "carbonato barico"], iupac: ["trioxidocarbonato de bario"], options: ["\\mathrm{BaCO}_3", "\\mathrm{BaSO}_4", "\\mathrm{Ba(HCO}_3)_2", "\\mathrm{BaO}"] },
-            { formula: "\\mathrm{Ba}_3(\\mathrm{PO}_4)_2", category: "Oxisal (Ba)", trad: ["fosfato de bario", "fosfato barico"], iupac: ["bis(tetraoxidofosfato) de tribario", "tetraoxidofosfato de bario"], options: ["\\mathrm{Ba}_3(\\mathrm{PO}_4)_2", "\\mathrm{BaSO}_4", "\\mathrm{BaHPO}_4", "\\mathrm{Ba}_3\\mathrm{P}_2"] },
-            { formula: "\\mathrm{Al(NO}_3)_3", category: "Oxisal (Al)", trad: ["nitrato de aluminio", "nitrato aluminico"], iupac: ["tris(trioxidonitrato) de aluminio", "trioxidonitrato de aluminio"], options: ["\\mathrm{Al(NO}_3)_3", "\\mathrm{Al}_2(\\mathrm{SO}_4)_3", "\\mathrm{AlNO}_2", "\\mathrm{AlN}"] },
-            { formula: "\\mathrm{Al}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Al)", trad: ["sulfato de aluminio", "sulfato aluminico"], iupac: ["tris(tetraoxidosulfato) de dialuminio", "tetraoxidosulfato de aluminio"], options: ["\\mathrm{Al}_2(\\mathrm{SO}_4)_3", "\\mathrm{Al}_2(\\mathrm{SO}_3)_3", "\\mathrm{AlPO}_4", "\\mathrm{Al(NO}_3)_3"] },
-            { formula: "\\mathrm{AlPO}_4", category: "Oxisal (Al)", trad: ["fosfato de aluminio", "fosfato aluminico"], iupac: ["tetraoxidofosfato de aluminio"], options: ["\\mathrm{Al}_2(\\mathrm{SO}_4)_3", "\\mathrm{AlPO}_4", "\\mathrm{Al(PO}_3)_3", "\\mathrm{Al}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Al}_2(\\mathrm{CO}_3)_3", category: "Oxisal (Al)", trad: ["carbonato de aluminio", "carbonato aluminico"], iupac: ["tris(trioxidocarbonato) de dialuminio", "trioxidocarbonato de aluminio"], options: ["\\mathrm{Al}_2(\\mathrm{CO}_3)_3", "\\mathrm{Al}_2(\\mathrm{SO}_4)_3", "\\mathrm{AlPO}_4", "\\mathrm{Al}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{AgNO}_2", category: "Oxisal (Ag)", trad: ["nitrito de plata", "nitrito argentico"], iupac: ["dioxidonitrato de plata"], options: ["\\mathrm{AgNO}_2", "\\mathrm{AgNO}_3", "\\mathrm{Ag}_2\\mathrm{SO}_4", "\\mathrm{AgCl}"] },
-            { formula: "\\mathrm{AgNO}_3", category: "Oxisal (Ag)", trad: ["nitrato de plata", "nitrato argentico"], iupac: ["trioxidonitrato de plata"], options: ["\\mathrm{AgNO}_2", "\\mathrm{AgNO}_3", "\\mathrm{Ag}_2\\mathrm{SO}_4", "\\mathrm{AgCl}"] },
-            { formula: "\\mathrm{Ag}_2\\mathrm{SO}_4", category: "Oxisal (Ag)", trad: ["sulfato de plata", "sulfato argentico"], iupac: ["tetraoxidosulfato de diplata", "tetraoxidosulfato de plata"], options: ["\\mathrm{AgNO}_3", "\\mathrm{Ag}_2\\mathrm{SO}_4", "\\mathrm{Ag}_2\\mathrm{SO}_3", "\\mathrm{AgCl}"] },
-            { formula: "\\mathrm{Ag}_2\\mathrm{CO}_3", category: "Oxisal (Ag)", trad: ["carbonato de plata", "carbonato argentico"], iupac: ["trioxidocarbonato de diplata", "trioxidocarbonato de plata"], options: ["\\mathrm{AgNO}_3", "\\mathrm{Ag}_2\\mathrm{SO}_4", "\\mathrm{Ag}_2\\mathrm{CO}_3", "\\mathrm{Ag}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Ag}_3\\mathrm{PO}_4", category: "Oxisal (Ag)", trad: ["fosfato de plata", "fosfato argentico"], iupac: ["tetraoxidofosfato de triplata", "tetraoxidofosfato de plata"], options: ["\\mathrm{AgNO}_3", "\\mathrm{Ag}_3\\mathrm{PO}_4", "\\mathrm{Ag}_2\\mathrm{CO}_3", "\\mathrm{Ag}_2\\mathrm{SO}_4"] },
-            { formula: "\\mathrm{Zn(NO}_3)_2", category: "Oxisal (Zn)", trad: ["nitrato de zinc", "nitrato zincico"], iupac: ["bis(trioxidonitrato) de zinc", "trioxidonitrato de zinc"], options: ["\\mathrm{ZnSO}_4", "\\mathrm{Zn(NO}_3)_2", "\\mathrm{ZnCO}_3", "\\mathrm{ZnO}"] },
-            { formula: "\\mathrm{ZnSO}_4", category: "Oxisal (Zn)", trad: ["sulfato de zinc", "sulfato zincico"], iupac: ["tetraoxidosulfato de zinc"], options: ["\\mathrm{ZnSO}_3", "\\mathrm{ZnSO}_4", "\\mathrm{ZnCO}_3", "\\mathrm{Zn(NO}_3)_2"] },
-            { formula: "\\mathrm{ZnCO}_3", category: "Oxisal (Zn)", trad: ["carbonato de zinc", "carbonato zincico"], iupac: ["trioxidocarbonato de zinc"], options: ["\\mathrm{ZnSO}_4", "\\mathrm{Zn(NO}_3)_2", "\\mathrm{ZnCO}_3", "\\mathrm{ZnO}"] },
-            { formula: "\\mathrm{Zn}_3(\\mathrm{PO}_4)_2", category: "Oxisal (Zn)", trad: ["fosfato de zinc", "fosfato zincico"], iupac: ["bis(tetraoxidofosfato) de trizinc", "tetraoxidofosfato de zinc"], options: ["\\mathrm{Zn}_3(\\mathrm{PO}_4)_2", "\\mathrm{ZnSO}_4", "\\mathrm{ZnCO}_3", "\\mathrm{Zn}_3\\mathrm{P}_2"] },
-            { formula: "\\mathrm{NH}_4\\mathrm{NO}_3", category: "Oxisal (Amonio)", trad: ["nitrato de amonio"], iupac: ["trioxidonitrato de amonio"], options: ["\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{NH}_4\\mathrm{NO}_2", "\\mathrm{NH}_3"] },
-            { formula: "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", category: "Oxisal (Amonio)", trad: ["sulfato de amonio"], iupac: ["tetraoxidosulfato de diamonio", "tetraoxidosulfato de amonio"], options: ["\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", "\\mathrm{NH}_4\\mathrm{Cl}"] },
-            { formula: "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", category: "Oxisal (Amonio)", trad: ["carbonato de amonio"], iupac: ["trioxidocarbonato de diamonio", "trioxidocarbonato de amonio"], options: ["\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{(NH}_4)_2\\mathrm{CO}_3", "\\mathrm{NH}_4\\mathrm{HCO}_3"] },
-            { formula: "\\mathrm{(NH}_4)_3\\mathrm{PO}_4", category: "Oxisal (Amonio)", trad: ["fosfato de amonio"], iupac: ["tetraoxidofosfato de triamonio", "tetraoxidofosfato de amonio"], options: ["\\mathrm{(NH}_4)_3\\mathrm{PO}_4", "\\mathrm{(NH}_4)_2\\mathrm{SO}_4", "\\mathrm{NH}_4\\mathrm{NO}_3", "\\mathrm{NH}_4\\mathrm{H}_2\\mathrm{PO}_4"] },
-
-            // ================= OXISALES (VALENCIA VARIABLE SIN PARÉNTESIS DE VALENCIA EN IUPAC) =================
-            { formula: "\\mathrm{Fe(NO}_3)_2", category: "Oxisal (Fe II)", trad: ["nitrato de hierro(ii)"], iupac: ["bis(trioxidonitrato) de hierro", "trioxidonitrato de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
-            { formula: "\\mathrm{Fe(NO}_3)_3", category: "Oxisal (Fe III)", trad: ["nitrato de hierro(iii)"], iupac: ["tris(trioxidonitrato) de hierro", "trioxidonitrato de hierro"], options: ["\\mathrm{Fe(NO}_3)_2", "\\mathrm{Fe(NO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{FeSO}_4", category: "Oxisal (Fe II)", trad: ["sulfato de hierro(ii)"], iupac: ["tetraoxidosulfato de hierro"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
-            { formula: "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Fe III)", trad: ["sulfato de hierro(iii)"], iupac: ["tris(tetraoxidosulfato) de dihierro", "tetraoxidosulfato de hierro"], options: ["\\mathrm{FeSO}_4", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{FeSO}_3", "\\mathrm{FeS}"] },
-            { formula: "\\mathrm{Fe(ClO}_3)_2", category: "Oxisal (Fe II)", trad: ["clorato de hierro(ii)"], iupac: ["bis(trioxidoclorato) de hierro", "trioxidoclorato de hierro"], options: ["\\mathrm{Fe(ClO}_3)_2", "\\mathrm{Fe(ClO}_3)_3", "\\mathrm{Fe(ClO}_4)_2", "\\mathrm{FeCl}_2"] },
-            { formula: "\\mathrm{Fe(ClO}_3)_3", category: "Oxisal (Fe III)", trad: ["clorato de hierro(iii)"], iupac: ["tris(trioxidoclorato) de hierro", "trioxidoclorato de hierro"], options: ["\\mathrm{Fe(ClO}_3)_2", "\\mathrm{Fe(ClO}_3)_3", "\\mathrm{Fe(ClO}_4)_3", "\\mathrm{FeCl}_3"] },
-            { formula: "\\mathrm{FeCO}_3", category: "Oxisal (Fe II)", trad: ["carbonato de hierro(ii)"], iupac: ["trioxidocarbonato de hierro"], options: ["\\mathrm{FeCO}_3", "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", "\\mathrm{FeSO}_4", "\\mathrm{FeO}"] },
-            { formula: "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", category: "Oxisal (Fe III)", trad: ["carbonato de hierro(iii)"], iupac: ["tris(trioxidocarbonato) de dihierro", "trioxidocarbonato de hierro"], options: ["\\mathrm{FeCO}_3", "\\mathrm{Fe}_2(\\mathrm{CO}_3)_3", "\\mathrm{Fe}_2(\\mathrm{SO}_4)_3", "\\mathrm{Fe}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{CuNO}_3", category: "Oxisal (Cu I)", trad: ["nitrato de cobre(i)"], iupac: ["trioxidonitrato de cobre"], options: ["\\mathrm{CuNO}_3", "\\mathrm{Cu(NO}_3)_2", "\\mathrm{CuNO}_2", "\\mathrm{Cu}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Cu(NO}_3)_2", category: "Oxisal (Cu II)", trad: ["nitrato de cobre(ii)"], iupac: ["bis(trioxidonitrato) de cobre", "trioxidonitrato de cobre"], options: ["\\mathrm{CuNO}_3", "\\mathrm{Cu(NO}_3)_2", "\\mathrm{CuNO}_2", "\\mathrm{CuO}"] },
-            { formula: "\\mathrm{CuSO}_4", category: "Oxisal (Cu II)", trad: ["sulfato de cobre(ii)"], iupac: ["tetraoxidosulfato de cobre"], options: ["\\mathrm{CuSO}_4", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{CuSO}_3", "\\mathrm{CuS}"] },
-            { formula: "\\mathrm{Cu}_2\\mathrm{SO}_4", category: "Oxisal (Cu I)", trad: ["sulfato de cobre(i)"], iupac: ["tetraoxidosulfato de dicobre", "tetraoxidosulfato de cobre"], options: ["\\mathrm{CuSO}_4", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{CuSO}_3", "\\mathrm{Cu}_2\\mathrm{S}"] },
-            { formula: "\\mathrm{CuCO}_3", category: "Oxisal (Cu II)", trad: ["carbonato de cobre(ii)"], iupac: ["trioxidocarbonato de cobre"], options: ["\\mathrm{CuCO}_3", "\\mathrm{Cu}_2\\mathrm{CO}_3", "\\mathrm{CuSO}_4", "\\mathrm{CuO}"] },
-            { formula: "\\mathrm{Cu}_2\\mathrm{CO}_3", category: "Oxisal (Cu I)", trad: ["carbonato de cobre(i)"], iupac: ["trioxidocarbonato de dicobre", "trioxidocarbonato de cobre"], options: ["\\mathrm{CuCO}_3", "\\mathrm{Cu}_2\\mathrm{CO}_3", "\\mathrm{Cu}_2\\mathrm{SO}_4", "\\mathrm{Cu}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Pb(NO}_3)_2", category: "Oxisal (Pb II)", trad: ["nitrato de plomo(ii)"], iupac: ["bis(trioxidonitrato) de plomo", "trioxidonitrato de plomo"], options: ["\\mathrm{Pb(NO}_3)_2", "\\mathrm{Pb(NO}_3)_4", "\\mathrm{PbSO}_4", "\\mathrm{PbCl}_2"] },
-            { formula: "\\mathrm{Pb(NO}_3)_4", category: "Oxisal (Pb IV)", trad: ["nitrato de plomo(iv)"], iupac: ["tetrakis(trioxidonitrato) de plomo", "trioxidonitrato de plomo"], options: ["\\mathrm{Pb(NO}_3)_2", "\\mathrm{Pb(NO}_3)_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbO}_2"] },
-            { formula: "\\mathrm{PbSO}_4", category: "Oxisal (Pb II)", trad: ["sulfato de plomo(ii)"], iupac: ["tetraoxidosulfato de plomo"], options: ["\\mathrm{PbSO}_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbSO}_3", "\\mathrm{PbO}"] },
-            { formula: "\\mathrm{Pb(SO}_4)_2", category: "Oxisal (Pb IV)", trad: ["sulfato de plomo(iv)"], iupac: ["bis(tetraoxidosulfato) de plomo", "tetraoxidosulfato de plomo"], options: ["\\mathrm{PbSO}_4", "\\mathrm{Pb(SO}_4)_2", "\\mathrm{PbSO}_3", "\\mathrm{PbO}_2"] },
-            { formula: "\\mathrm{Sn(NO}_3)_2", category: "Oxisal (Sn II)", trad: ["nitrato de estaño(ii)"], iupac: ["bis(trioxidonitrato) de estano", "trioxidonitrato de estano"], options: ["\\mathrm{Sn(NO}_3)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{SnNO}_2", "\\mathrm{SnO}"] },
-            { formula: "\\mathrm{Sn(NO}_3)_4", category: "Oxisal (Sn IV)", trad: ["nitrato de estaño(iv)"], iupac: ["tetrakis(trioxidonitrato) de estano", "trioxidonitrato de estano"], options: ["\\mathrm{Sn(NO}_3)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{SnO}_2"] },
-            { formula: "\\mathrm{SnSO}_4", category: "Oxisal (Sn II)", trad: ["sulfato de estaño(ii)"], iupac: ["tetraoxidosulfato de estano"], options: ["\\mathrm{SnSO}_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{SnSO}_3", "\\mathrm{SnO}"] },
-            { formula: "\\mathrm{Sn(SO}_4)_2", category: "Oxisal (Sn IV)", trad: ["sulfato de estaño(iv)"], iupac: ["bis(tetraoxidosulfato) de estano", "tetraoxidosulfato de estano"], options: ["\\mathrm{SnSO}_4", "\\mathrm{Sn(SO}_4)_2", "\\mathrm{Sn(NO}_3)_4", "\\mathrm{SnO}_2"] },
-            { formula: "\\mathrm{CoSO}_4", category: "Oxisal (Co II)", trad: ["sulfato de cobalto(ii)"], iupac: ["tetraoxidosulfato de cobalto"], options: ["\\mathrm{CoSO}_4", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{CoCO}_3", "\\mathrm{CoO}"] },
-            { formula: "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Co III)", trad: ["sulfato de cobalto(iii)"], iupac: ["tris(tetraoxidosulfato) de dicobalto", "tetraoxidosulfato de cobalto"], options: ["\\mathrm{CoSO}_4", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{CoCO}_3", "\\mathrm{Co}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Co(NO}_3)_2", category: "Oxisal (Co II)", trad: ["nitrato de cobalto(ii)"], iupac: ["bis(trioxidonitrato) de cobalto", "trioxidonitrato de cobalto"], options: ["\\mathrm{Co(NO}_3)_2", "\\mathrm{Co(NO}_3)_3", "\\mathrm{CoSO}_4", "\\mathrm{CoO}"] },
-            { formula: "\\mathrm{Co(NO}_3)_3", category: "Oxisal (Co III)", trad: ["nitrato de cobalto(iii)"], iupac: ["tris(trioxidonitrato) de cobalto", "trioxidonitrato de cobalto"], options: ["\\mathrm{Co(NO}_3)_2", "\\mathrm{Co(NO}_3)_3", "\\mathrm{Co}_2(\\mathrm{SO}_4)_3", "\\mathrm{Co}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{NiSO}_4", category: "Oxisal (Ni II)", trad: ["sulfato de níquel(ii)"], iupac: ["tetraoxidosulfato de niquel"], options: ["\\mathrm{NiSO}_4", "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", "\\mathrm{NiCO}_3", "\\mathrm{NiO}"] },
-            { formula: "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Ni III)", trad: ["sulfato de níquel(iii)"], iupac: ["tris(tetraoxidosulfato) de diniquel", "tetraoxidosulfato de niquel"], options: ["\\mathrm{NiSO}_4", "\\mathrm{Ni}_2(\\mathrm{SO}_4)_3", "\\mathrm{Ni}_2(\\mathrm{CO}_3)_3", "\\mathrm{Ni}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Ni(NO}_3)_2", category: "Oxisal (Ni II)", trad: ["nitrato de níquel(ii)"], iupac: ["bis(trioxidonitrato) de niquel", "trioxidonitrato de niquel"], options: ["\\mathrm{Ni(NO}_3)_2", "\\mathrm{Ni(NO}_3)_3", "\\mathrm{NiSO}_4", "\\mathrm{NiO}"] },
-            { formula: "\\mathrm{Hg}_2\\mathrm{SO}_4", category: "Oxisal (Hg I)", trad: ["sulfato de mercurio(i)"], iupac: ["tetraoxidosulfato de dimercurio", "tetraoxidosulfato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{HgSO}_4", "\\mathrm{Hg}_2\\mathrm{NO}_3", "\\mathrm{Hg}_2\\mathrm{Cl}_2"] },
-            { formula: "\\mathrm{HgSO}_4", category: "Oxisal (Hg II)", trad: ["sulfato de mercurio(ii)"], iupac: ["tetraoxidosulfato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{HgSO}_4", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{HgO}"] },
-            { formula: "\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", category: "Oxisal (Hg I)", trad: ["nitrato de mercurio(i)"], iupac: ["bis(trioxidonitrato) de dimercurio", "trioxidonitrato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{Hg}_2\\mathrm{SO}_4", "\\mathrm{Hg}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Hg(NO}_3)_2", category: "Oxisal (Hg II)", trad: ["nitrato de mercurio(ii)"], iupac: ["bis(trioxidonitrato) de mercurio", "trioxidonitrato de mercurio"], options: ["\\mathrm{Hg}_2\\mathrm{(NO}_3)_2", "\\mathrm{Hg(NO}_3)_2", "\\mathrm{HgSO}_4", "\\mathrm{HgO}"] },
-            { formula: "\\mathrm{AuNO}_3", category: "Oxisal (Au I)", trad: ["nitrato de oro(i)"], iupac: ["trioxidonitrato de oro"], options: ["\\mathrm{AuNO}_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2\\mathrm{SO}_4", "\\mathrm{Au}_2\\mathrm{O}"] },
-            { formula: "\\mathrm{Au(NO}_3)_3", category: "Oxisal (Au III)", trad: ["nitrato de oro(iii)"], iupac: ["tris(trioxidonitrato) de oro", "trioxidonitrato de oro"], options: ["\\mathrm{AuNO}_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", "\\mathrm{Au}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Au III)", trad: ["sulfato de oro(iii)"], iupac: ["tris(tetraoxidosulfato) de dioro", "tetraoxidosulfato de oro"], options: ["\\mathrm{Au}_2\\mathrm{SO}_4", "\\mathrm{Au}_2(\\mathrm{SO}_4)_3", "\\mathrm{Au(NO}_3)_3", "\\mathrm{Au}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{PtSO}_4", category: "Oxisal (Pt II)", trad: ["sulfato de platino(ii)"], iupac: ["tetraoxidosulfato de platino"], options: ["\\mathrm{PtSO}_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{Pt(NO}_3)_2", "\\mathrm{PtO}"] },
-            { formula: "\\mathrm{Pt(SO}_4)_2", category: "Oxisal (Pt IV)", trad: ["sulfato de platino(iv)"], iupac: ["bis(tetraoxidosulfato) de platino", "tetraoxidosulfato de platino"], options: ["\\mathrm{PtSO}_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{PtO}_2"] },
-            { formula: "\\mathrm{Pt(NO}_3)_2", category: "Oxisal (Pt II)", trad: ["nitrato de platino(ii)"], iupac: ["bis(trioxidonitrato) de platino", "trioxidonitrato de platino"], options: ["\\mathrm{Pt(NO}_3)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{PtSO}_4", "\\mathrm{PtO}"] },
-            { formula: "\\mathrm{Pt(NO}_3)_4", category: "Oxisal (Pt IV)", trad: ["nitrato de platino(iv)"], iupac: ["tetrakis(trioxidonitrato) de platino", "trioxidonitrato de platino"], options: ["\\mathrm{Pt(NO}_3)_2", "\\mathrm{Pt(NO}_3)_4", "\\mathrm{Pt(SO}_4)_2", "\\mathrm{PtO}_2"] },
-            { formula: "\\mathrm{Bi(NO}_3)_3", category: "Oxisal (Bi III)", trad: ["nitrato de bismuto(iii)"], iupac: ["tris(trioxidonitrato) de bismuto", "trioxidonitrato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{Bi}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", category: "Oxisal (Bi III)", trad: ["sulfato de bismuto(iii)"], iupac: ["tris(tetraoxidosulfato) de dibismuto", "tetraoxidosulfato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{Bi}_2\\mathrm{O}_3"] },
-            { formula: "\\mathrm{BiPO}_4", category: "Oxisal (Bi III)", trad: ["fosfato de bismuto(iii)"], iupac: ["tetraoxidofosfato de bismuto"], options: ["\\mathrm{Bi(NO}_3)_3", "\\mathrm{Bi}_2(\\mathrm{SO}_4)_3", "\\mathrm{BiPO}_4", "\\mathrm{BiPO}_3"] }
+        const periodicElements = [
+            { s: 'H', n: 'Hidrógeno', z: 1, r: 1, c: 1 }, { s: 'He', n: 'Helio', z: 2, r: 1, c: 18 },
+            { s: 'Li', n: 'Litio', z: 3, r: 2, c: 1 }, { s: 'Be', n: 'Berilio', z: 4, r: 2, c: 2 }, 
+            { s: 'B', n: 'Boro', z: 5, r: 2, c: 13 }, { s: 'C', n: 'Carbono', z: 6, r: 2, c: 14 }, { s: 'N', n: 'Nitrógeno', z: 7, r: 2, c: 15 }, { s: 'O', n: 'Oxígeno', z: 8, r: 2, c: 16 }, { s: 'F', n: 'Flúor', z: 9, r: 2, c: 17 }, { s: 'Ne', n: 'Neón', z: 10, r: 2, c: 18 },
+            { s: 'Na', n: 'Sodio', z: 11, r: 3, c: 1 }, { s: 'Mg', n: 'Magnesio', z: 12, r: 3, c: 2 }, 
+            { s: 'Al', n: 'Aluminio', z: 13, r: 3, c: 13 }, { s: 'Si', n: 'Silicio', z: 14, r: 3, c: 14 }, { s: 'P', n: 'Fósforo', z: 15, r: 3, c: 15 }, { s: 'S', n: 'Azufre', z: 16, r: 3, c: 16 }, { s: 'Cl', n: 'Cloro', z: 17, r: 3, c: 17 }, { s: 'Ar', n: 'Argón', z: 18, r: 3, c: 18 },
+            { s: 'K', n: 'Potasio', z: 19, r: 4, c: 1 }, { s: 'Ca', n: 'Calcio', z: 20, r: 4, c: 2 }, 
+            { s: 'Sc', n: 'Escandio', z: 21, r: 4, c: 3 }, { s: 'Ti', n: 'Titanio', z: 22, r: 4, c: 4 }, { s: 'V', n: 'Vanadio', z: 23, r: 4, c: 5 }, { s: 'Cr', n: 'Cromo', z: 24, r: 4, c: 6 }, { s: 'Mn', n: 'Manganeso', z: 25, r: 4, c: 7 }, { s: 'Fe', n: 'Hierro', z: 26, r: 4, c: 8 }, { s: 'Co', n: 'Cobalto', z: 27, r: 4, c: 9 }, { s: 'Ni', n: 'Níquel', z: 28, r: 4, c: 10 }, { s: 'Cu', n: 'Cobre', z: 29, r: 4, c: 11 }, { s: 'Zn', n: 'Zinc', z: 30, r: 4, c: 12 }, 
+            { s: 'Ga', n: 'Galio', z: 31, r: 4, c: 13 }, { s: 'Ge', n: 'Germanio', z: 32, r: 4, c: 14 }, { s: 'As', n: 'Arsénico', z: 33, r: 4, c: 15 }, { s: 'Se', n: 'Selenio', z: 34, r: 4, c: 16 }, { s: 'Br', n: 'Bromo', z: 35, r: 4, c: 17 }, { s: 'Kr', n: 'Kriptón', z: 36, r: 4, c: 18 },
+            { s: 'Rb', n: 'Rubidio', z: 37, r: 5, c: 1 }, { s: 'Sr', n: 'Estroncio', z: 38, r: 5, c: 2 }, 
+            { s: 'In', n: 'Indio', z: 49, r: 5, c: 13 }, { s: 'Sn', n: 'Estaño', z: 50, r: 5, c: 14 }, { s: 'Sb', n: 'Antimonio', z: 51, r: 5, c: 15 }, { s: 'Te', n: 'Telurio', z: 52, r: 5, c: 16 }, { s: 'I', n: 'Yodo', z: 53, r: 5, c: 17 }, { s: 'Xe', n: 'Xenón', z: 54, r: 5, c: 18 },
+            { s: 'Cs', n: 'Cesio', z: 55, r: 6, c: 1 }, { s: 'Ba', n: 'Bario', z: 56, r: 6, c: 2 }, 
+            { s: 'Tl', n: 'Talio', z: 81, r: 6, c: 13 }, { s: 'Pb', n: 'Plomo', z: 82, r: 6, c: 14 }, { s: 'Bi', n: 'Bismuto', z: 83, r: 6, c: 15 }, { s: 'Po', n: 'Polonio', z: 84, r: 6, c: 16 }, { s: 'At', n: 'Ástato', z: 85, r: 6, c: 17 }, { s: 'Rn', n: 'Radón', z: 86, r: 6, c: 18 },
+            { s: 'Fr', n: 'Francio', z: 87, r: 7, c: 1 }, { s: 'Ra', n: 'Radio', z: 88, r: 7, c: 2 },
+            { s: 'Nh', n: 'Nihonio', z: 113, r: 7, c: 13 }, { s: 'Fl', n: 'Flerovio', z: 114, r: 7, c: 14 }, { s: 'Mc', n: 'Moscovio', z: 115, r: 7, c: 15 }, { s: 'Lv', n: 'Livermorio', z: 116, r: 7, c: 16 }, { s: 'Ts', n: 'Teneso', z: 117, r: 7, c: 17 }, { s: 'Og', n: 'Oganesón', z: 118, r: 7, c: 18 }
         ];
 
         let currentItem = null;
+        let currentElement = null;
         let currentMode = 1;
         let score = 0, total = 0, streak = 0;
+        
+        let elementsToSort = [];
+        let selectedForSort = [];
+
+        let remainingTiles = [];
+        let currentTile = null;
+        let placedGrid = {};
 
         function showScreen(screenId) {
             const screens = ['mainMenu', 'trimestre1Menu', 'emptyTrimestreScreen', 'menuScreen', 'quizScreen'];
-            screens.forEach(s => {
-                document.getElementById(s).classList.add('hidden');
-            });
+            screens.forEach(s => document.getElementById(s).classList.add('hidden'));
             document.getElementById(screenId).classList.remove('hidden');
         }
 
@@ -332,29 +278,12 @@
 
         function renderMath(targetElement, latexString) {
             targetElement.innerHTML = '';
-            try {
-                katex.render(latexString, targetElement, { throwOnError: false, displayMode: true });
-            } catch (e) {
-                targetElement.innerText = latexString;
-            }
+            try { katex.render(latexString, targetElement, { throwOnError: false, displayMode: true }); } 
+            catch (e) { targetElement.innerText = latexString; }
         }
 
         function cleanStr(str) {
-            return str.trim().toLowerCase()
-                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-                .replace(/\s+/g, "")
-                .replace(/\(2\+\)/g, "")
-                .replace(/\(3\+\)/g, "")
-                .replace(/\(1\+\)/g, "")
-                .replace(/\(4\+\)/g, "")
-                .replace(/\(ii\)/g, "")
-                .replace(/\(iii\)/g, "")
-                .replace(/\(iv\)/g, "")
-                .replace(/\(i\)/g, "")
-                .replace(/\(1-\)/g, "")
-                .replace(/\(2-\)/g, "")
-                .replace(/\(3-\)/g, "")
-                .replace(/\(4-\)/g, "");
+            return str.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "").replace(/\([^)]+\)/g, "");
         }
 
         function startPractice(mode) {
@@ -363,174 +292,359 @@
             nextQuestion();
         }
 
-        function returnToMenu() {
+        function returnToActiveMenu() {
             showScreen('menuScreen');
+        }
+
+        function createTile(elementObj, isSelected) {
+            const btn = document.createElement('button');
+            btn.className = `w-16 h-16 border rounded-lg flex flex-col items-center justify-center transition shadow-md active:scale-95 ${isSelected ? 'bg-teal-900/80 border-teal-500 hover:bg-teal-800' : 'bg-slate-800 border-slate-600 hover:bg-slate-700'}`;
+            btn.innerHTML = `<span class="font-bold text-lg text-emerald-300">${elementObj.s}</span><span class="text-[0.6rem] text-slate-300 truncate max-w-full px-1">${elementObj.n}</span>`;
+            
+            btn.onclick = () => {
+                if (isSelected) {
+                    selectedForSort = selectedForSort.filter(e => e.z !== elementObj.z);
+                    elementsToSort.push(elementObj);
+                } else {
+                    elementsToSort = elementsToSort.filter(e => e.z !== elementObj.z);
+                    selectedForSort.push(elementObj);
+                }
+                updateSortUI();
+            };
+            return btn;
+        }
+
+        function updateSortUI() {
+            const source = document.getElementById('sortSource');
+            const target = document.getElementById('sortTarget');
+            source.innerHTML = ''; target.innerHTML = '';
+
+            elementsToSort.forEach(el => source.appendChild(createTile(el, false)));
+            selectedForSort.forEach(el => target.appendChild(createTile(el, true)));
+
+            if (elementsToSort.length === 0) {
+                document.getElementById('checkSortBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('checkSortBtn').classList.add('hidden');
+            }
+        }
+
+        function initMode4() {
+            placedGrid = {};
+            remainingTiles = [...periodicElements].sort(() => Math.random() - 0.5);
+            currentTile = remainingTiles.shift();
+
+            renderTableBoard();
+            renderTableTiles();
+        }
+
+        function renderTableBoard() {
+            const grid = document.getElementById('ptableGrid');
+            grid.innerHTML = '';
+
+            for (let r = 1; r <= 7; r++) {
+                for (let c = 1; c <= 18; c++) {
+                    const el = periodicElements.find(e => e.r === r && e.c === c);
+                    const cell = document.createElement('div');
+                    cell.className = "aspect-square flex flex-col items-center justify-center text-[0.65rem] rounded border transition min-h-[2.2rem]";
+
+                    if (el) {
+                        const placed = placedGrid[el.z];
+                        if (placed) {
+                            cell.className += " bg-emerald-950 border-emerald-500 text-emerald-200 cursor-pointer hover:bg-emerald-900";
+                            cell.innerHTML = `<span class="font-bold text-xs">${placed.s}</span>`;
+                            cell.onclick = () => {
+                                if (currentTile) {
+                                    remainingTiles.unshift(currentTile);
+                                }
+                                currentTile = placed;
+                                delete placedGrid[el.z];
+                                renderTableBoard();
+                                renderTableTiles();
+                            };
+                        } else {
+                            cell.className += " bg-amber-950/30 border-dashed border-amber-500/60 hover:bg-amber-900/50 cursor-pointer";
+                            cell.innerHTML = `<span class="text-[0.55rem] text-amber-400/60 font-mono">${el.z}</span>`;
+                            cell.onclick = () => {
+                                if (currentTile) {
+                                    placedGrid[el.z] = currentTile;
+                                    currentTile = remainingTiles.length > 0 ? remainingTiles.shift() : null;
+                                    renderTableBoard();
+                                    renderTableTiles();
+                                }
+                            };
+                        }
+                    } else {
+                        cell.className += " bg-transparent border-transparent pointer-events-none";
+                    }
+                    grid.appendChild(cell);
+                }
+            }
+
+            if (Object.keys(placedGrid).length === periodicElements.length) {
+                document.getElementById('checkTableBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('checkTableBtn').classList.add('hidden');
+            }
+        }
+
+        function renderTableTiles() {
+            const container = document.getElementById('tableTilesSource');
+            container.innerHTML = '';
+
+            if (currentTile) {
+                const div = document.createElement('div');
+                div.className = 'px-5 py-3 bg-amber-500 text-slate-950 font-bold text-lg rounded-xl border border-amber-300 shadow-lg flex items-center gap-2 animate-pulse';
+                div.innerHTML = `<span>${currentTile.s}</span><span class="text-xs font-semibold text-slate-900">(${currentTile.n})</span>`;
+                container.appendChild(div);
+
+                const countSpan = document.createElement('span');
+                countSpan.className = 'text-xs text-slate-400 block w-full text-center mt-1';
+                countSpan.innerText = `Quedan ${remainingTiles.length + 1} fichas por colocar`;
+                container.appendChild(countSpan);
+            } else {
+                container.innerHTML = '<span class="text-xs text-emerald-400 font-bold">¡Todas las fichas colocadas! Pulsa comprobar para verificar.</span>';
+            }
+        }
+
+        function checkMode4() {
+            let correctCount = 0;
+            periodicElements.forEach(el => {
+                const placed = placedGrid[el.z];
+                if (placed && placed.z === el.z) {
+                    correctCount++;
+                }
+            });
+
+            const isCorrect = correctCount === periodicElements.length;
+            let details = `<div class="space-y-1"><p>Aciertos: <span class="font-bold text-amber-300">${correctCount} de ${periodicElements.length}</span> elementos en su posición correcta.</p></div>`;
+
+            showFeedback(isCorrect ? 'green' : 'rose', details);
+            document.getElementById('checkTableBtn').classList.add('hidden');
         }
 
         function nextQuestion() {
             document.getElementById('feedbackBox').classList.add('hidden');
             document.getElementById('nextBtn').classList.add('hidden');
-            document.getElementById('inputTrad').value = '';
-            document.getElementById('inputIupac').value = '';
 
-            currentItem = db[Math.floor(Math.random() * db.length)];
+            if (currentMode === 1 || currentMode === 2) {
+                document.getElementById('formMode3').classList.add('hidden');
+                document.getElementById('formMode4').classList.add('hidden');
+                document.getElementById('formMode5').classList.add('hidden');
+                document.getElementById('questionHeader').classList.remove('hidden');
+                document.getElementById('inputTrad').value = '';
+                document.getElementById('inputIupac').value = '';
 
-            document.getElementById('elemBadge').innerText = currentItem.category;
+                currentItem = db[Math.floor(Math.random() * db.length)];
+                document.getElementById('elemBadge').innerText = currentItem.category;
 
-            if (currentMode === 1) {
-                document.getElementById('modeBadge').innerText = "Modo: Escribir Nombres";
-                document.getElementById('questionLabel').innerText = "ESCRIBE AMBOS NOMBRES";
-                
-                renderMath(document.getElementById('questionTarget'), currentItem.formula);
+                if (currentMode === 1) {
+                    document.getElementById('modeBadge').innerText = "Modo: Escribir Nombres";
+                    document.getElementById('questionLabel').innerText = "ESCRIBE AMBOS NOMBRES";
+                    renderMath(document.getElementById('questionTarget'), currentItem.formula);
+                    document.getElementById('formMode1').classList.remove('hidden');
+                    document.getElementById('formMode2').classList.add('hidden');
+                } else {
+                    document.getElementById('modeBadge').innerText = "Modo: Seleccionar Fórmula";
+                    const useTradName = Math.random() > 0.5;
+                    document.getElementById('questionLabel').innerText = useTradName ? "NOM. TRADICIONAL / STOCK" : "NOM. IUPAC / SISTEMA";
+                    document.getElementById('questionTarget').innerText = (useTradName ? currentItem.trad[0] : currentItem.iupac[0]).toUpperCase();
+                    document.getElementById('formMode1').classList.add('hidden');
+                    document.getElementById('formMode2').classList.remove('hidden');
 
-                document.getElementById('formMode1').classList.remove('hidden');
-                document.getElementById('formMode2').classList.add('hidden');
-            } else {
-                document.getElementById('modeBadge').innerText = "Modo: Seleccionar Fórmula";
-                const useTradName = Math.random() > 0.5;
-                const questionName = useTradName ? currentItem.trad[0] : currentItem.iupac[0];
-                
-                document.getElementById('questionLabel').innerText = useTradName ? "NOM. TRADICIONAL / STOCK" : "NOM. IUPAC / SISTEMA";
-                document.getElementById('questionTarget').innerText = questionName.toUpperCase();
-
+                    const optsContainer = document.getElementById('optionsGrid');
+                    optsContainer.innerHTML = '';
+                    [...currentItem.options].sort(() => Math.random() - 0.5).forEach(opt => {
+                        const btn = document.createElement('button');
+                        btn.className = "p-4 bg-slate-900 hover:bg-slate-700 active:bg-slate-600 rounded-xl border border-slate-700 font-bold text-center text-lg transition flex items-center justify-center min-h-[4.5rem]";
+                        btn.dataset.formulaVal = opt;
+                        btn.onclick = () => checkMode2(opt, btn);
+                        renderMath(btn, opt);
+                        optsContainer.appendChild(btn);
+                    });
+                }
+            } else if (currentMode === 3) {
                 document.getElementById('formMode1').classList.add('hidden');
-                document.getElementById('formMode2').classList.remove('hidden');
+                document.getElementById('formMode2').classList.add('hidden');
+                document.getElementById('formMode4').classList.add('hidden');
+                document.getElementById('formMode5').classList.add('hidden');
+                document.getElementById('questionHeader').classList.add('hidden');
+                document.getElementById('formMode3').classList.remove('hidden');
+                document.getElementById('modeBadge').innerText = "Ordenar Elementos";
+                document.getElementById('elemBadge').innerText = "Tabla Periódica";
 
-                const optsContainer = document.getElementById('optionsGrid');
-                optsContainer.innerHTML = '';
-                
-                const shuffledOpts = [...currentItem.options].sort(() => Math.random() - 0.5);
+                elementsToSort = [];
+                selectedForSort = [];
+                let tempDb = [...periodicElements].sort(() => Math.random() - 0.5);
+                elementsToSort = tempDb.slice(0, 4);
 
-                shuffledOpts.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = "p-4 bg-slate-900 hover:bg-slate-700 active:bg-slate-600 rounded-xl border border-slate-700 font-bold text-center text-lg transition flex items-center justify-center min-h-[4.5rem]";
-                    btn.dataset.formulaVal = opt;
-                    btn.onclick = () => checkMode2(opt, btn);
-                    renderMath(btn, opt);
-                    optsContainer.appendChild(btn);
-                });
+                updateSortUI();
+            } else if (currentMode === 4) {
+                document.getElementById('formMode1').classList.add('hidden');
+                document.getElementById('formMode2').classList.add('hidden');
+                document.getElementById('formMode3').classList.add('hidden');
+                document.getElementById('formMode5').classList.add('hidden');
+                document.getElementById('questionHeader').classList.add('hidden');
+                document.getElementById('formMode4').classList.remove('hidden');
+                document.getElementById('modeBadge').innerText = "Rellenar Tabla Periódica";
+                document.getElementById('elemBadge').innerText = "Tabla Periódica";
+
+                initMode4();
+            } else if (currentMode === 5) {
+                document.getElementById('formMode1').classList.add('hidden');
+                document.getElementById('formMode2').classList.add('hidden');
+                document.getElementById('formMode3').classList.add('hidden');
+                document.getElementById('formMode4').classList.add('hidden');
+                document.getElementById('questionHeader').classList.remove('hidden');
+                document.getElementById('formMode5').classList.remove('hidden');
+
+                document.getElementById('inputElementName').value = '';
+                currentElement = periodicElements[Math.floor(Math.random() * periodicElements.length)];
+
+                document.getElementById('modeBadge').innerText = "Nombra el Elemento";
+                document.getElementById('elemBadge').innerText = "Tabla Periódica";
+                document.getElementById('questionLabel').innerText = "ESCRIBE EL NOMBRE DEL ELEMENTO";
+                document.getElementById('questionTarget').innerHTML = `<div class="text-center"><span class="text-5xl font-black text-amber-300">${currentElement.s}</span><span class="text-xs text-slate-400 block mt-1">Número atómico (Z): ${currentElement.z}</span></div>`;
             }
         }
 
         function checkMode1() {
-            const userTrad = cleanStr(document.getElementById('inputTrad').value);
-            const userIupac = cleanStr(document.getElementById('inputIupac').value);
+            if(!currentItem) return;
+            const tVal = cleanStr(document.getElementById('inputTrad').value);
+            const iVal = cleanStr(document.getElementById('inputIupac').value);
+            const isTCorrect = currentItem.trad.some(t => cleanStr(t) === tVal);
+            const isICorrect = currentItem.iupac.some(i => cleanStr(i) === iVal);
 
-            if (!userTrad || !userIupac) {
-                alert("Por favor rellena ambos campos antes de comprobar.");
-                return;
-            }
-
-            const isTradOk = currentItem.trad.some(t => cleanStr(t) === userTrad);
-            const isIupacOk = currentItem.iupac.some(i => cleanStr(i) === userIupac);
-            
-            const correctCount = (isTradOk ? 1 : 0) + (isIupacOk ? 1 : 0);
-            let feedbackType = 'rose';
-            
-            if (correctCount === 2) {
-                feedbackType = 'green';
-            } else if (correctCount === 1) {
-                feedbackType = 'amber';
-            }
-            
-            let details = `
-                <div class="space-y-1">
-                    <p>• Tradicional / Stock: <strong class="text-teal-300">${currentItem.trad[0]}</strong> ${isTradOk ? '✓' : '✗'}</p>
-                    <p>• IUPAC / Sistema: <strong class="text-teal-300">${currentItem.iupac[0]}</strong> ${isIupacOk ? '✓' : '✗'}</p>
-                </div>
-            `;
-
-            showFeedback(feedbackType, details);
+            let details = `<div class="space-y-1"><p>Tradicional: <span class="text-teal-300 font-semibold">${currentItem.trad[0]}</span></p><p>IUPAC: <span class="text-teal-300 font-semibold">${currentItem.iupac[0]}</span></p></div>`;
+            showFeedback((isTCorrect && isICorrect) ? 'green' : 'rose', details);
         }
 
         function checkMode2(selectedOpt, clickedBtn) {
-            const allBtns = document.querySelectorAll('#optionsGrid button');
-            allBtns.forEach(b => b.onclick = null);
+            if(!currentItem) return;
+            const optsContainer = document.getElementById('optionsGrid');
+            Array.from(optsContainer.children).forEach(btn => {
+                btn.onclick = null;
+                btn.classList.add('opacity-50');
+                if(btn.dataset.formulaVal === currentItem.formula) {
+                    btn.classList.remove('bg-slate-900', 'opacity-50');
+                    btn.classList.add('bg-emerald-800', 'border-emerald-500');
+                }
+            });
 
-            const isOk = selectedOpt === currentItem.formula;
+            const isCorrect = selectedOpt === currentItem.formula;
+            if(!isCorrect) {
+                clickedBtn.classList.remove('bg-slate-900', 'opacity-50');
+                clickedBtn.classList.add('bg-rose-800', 'border-rose-500');
+            }
+            showFeedback(isCorrect ? 'green' : 'rose', '');
+        }
 
-            clickedBtn.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
-            if (isOk) {
-                clickedBtn.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
-            } else {
-                clickedBtn.classList.add('border-rose-500', 'bg-rose-950/80', 'text-rose-200');
-                allBtns.forEach(b => {
-                    if (b.dataset.formulaVal === currentItem.formula) {
-                        b.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
-                        b.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
-                    }
-                });
+        function checkMode3() {
+            const btnAll = document.querySelectorAll('#sortTarget button, #sortSource button');
+            btnAll.forEach(b => b.onclick = null); 
+            document.getElementById('checkSortBtn').classList.add('hidden');
+
+            let isCorrect = true;
+            for (let i = 0; i < selectedForSort.length - 1; i++) {
+                if (selectedForSort[i].z >= selectedForSort[i+1].z) {
+                    isCorrect = false;
+                    break;
+                }
             }
 
-            let details = `
-                <div class="space-y-1">
-                    <p>• Tradicional / Stock: <strong class="text-teal-300">${currentItem.trad[0]}</strong></p>
-                    <p>• IUPAC / Sistema: <strong class="text-teal-300">${currentItem.iupac[0]}</strong></p>
-                </div>
-            `;
-            showFeedback(isOk ? 'green' : 'rose', details);
+            const sortedCorrectly = [...selectedForSort].sort((a,b) => a.z - b.z);
+            let details = `<div class="space-y-1"><p>Orden correcto:</p><p class="text-teal-300 font-semibold mt-1">` + 
+                sortedCorrectly.map(e => `${e.s} (${e.z})`).join(' → ') + `</p></div>`;
+
+            showFeedback(isCorrect ? 'green' : 'rose', details);
+        }
+
+        function checkMode5() {
+            if (!currentElement) return;
+            const inputVal = cleanStr(document.getElementById('inputElementName').value);
+            const targetVal = cleanStr(currentElement.n);
+
+            const isCorrect = inputVal === targetVal;
+            let details = `<div class="space-y-1"><p>Elemento: <span class="text-teal-300 font-semibold">${currentElement.n}</span> (${currentElement.s})</p><p>Número Atómico (Z): <span class="text-teal-300 font-semibold">${currentElement.z}</span></p></div>`;
+            
+            showFeedback(isCorrect ? 'green' : 'rose', details);
         }
 
         function revealSolution() {
-            total++;
-            streak = 0;
-
+            total++; streak = 0;
             document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
             document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
 
-            if (currentMode === 2) {
-                const allBtns = document.querySelectorAll('#optionsGrid button');
-                allBtns.forEach(b => {
-                    b.onclick = null;
-                    if (b.dataset.formulaVal === currentItem.formula) {
-                        b.classList.remove('border-slate-700', 'bg-slate-900', 'hover:bg-slate-700');
-                        b.classList.add('border-emerald-500', 'bg-emerald-950/80', 'text-emerald-200');
+            if (currentMode === 4) {
+                periodicElements.forEach(el => {
+                    placedGrid[el.z] = el;
+                });
+                currentTile = null;
+                remainingTiles = [];
+                renderTableBoard();
+                renderTableTiles();
+                document.getElementById('checkTableBtn').classList.add('hidden');
+
+                let details = `<div class="space-y-1"><p>Se ha completado la tabla periódica con todas sus posiciones correctas.</p></div>`;
+                showFeedbackDirect(details);
+            } else if (currentMode === 3) {
+                const allElements = [...elementsToSort, ...selectedForSort];
+                elementsToSort = [];
+                selectedForSort = allElements.sort((a,b) => a.z - b.z);
+                updateSortUI();
+                const btnAll = document.querySelectorAll('#sortTarget button');
+                btnAll.forEach(b => b.onclick = null); 
+                document.getElementById('checkSortBtn').classList.add('hidden');
+                
+                let details = `<div class="space-y-1"><p>Orden correcto revelado:</p><p class="text-teal-300 font-semibold mt-1">` + 
+                    selectedForSort.map(e => `${e.s} (${e.z})`).join(' → ') + `</p></div>`;
+                showFeedbackDirect(details);
+            } else if (currentMode === 1) {
+                let details = `<div class="space-y-1"><p>Tradicional: <span class="text-teal-300 font-semibold">${currentItem.trad[0]}</span></p><p>IUPAC: <span class="text-teal-300 font-semibold">${currentItem.iupac[0]}</span></p></div>`;
+                showFeedbackDirect(details);
+            } else if (currentMode === 5) {
+                let details = `<div class="space-y-1"><p>Elemento: <span class="text-teal-300 font-semibold">${currentElement.n}</span> (${currentElement.s})</p><p>Número Atómico (Z): <span class="text-teal-300 font-semibold">${currentElement.z}</span></p></div>`;
+                showFeedbackDirect(details);
+            } else {
+                const optsContainer = document.getElementById('optionsGrid');
+                Array.from(optsContainer.children).forEach(btn => {
+                    btn.onclick = null;
+                    btn.classList.add('opacity-50');
+                    if(btn.dataset.formulaVal === currentItem.formula) {
+                        btn.classList.remove('bg-slate-900', 'opacity-50');
+                        btn.classList.add('bg-emerald-800', 'border-emerald-500');
                     }
                 });
+                showFeedbackDirect('');
             }
+        }
 
-            let details = `
-                <div class="space-y-1">
-                    <p>• Tradicional / Stock: <strong class="text-teal-300">${currentItem.trad[0]}</strong></p>
-                    <p>• IUPAC / Sistema: <strong class="text-teal-300">${currentItem.iupac[0]}</strong></p>
-                </div>
-            `;
-
+        function showFeedbackDirect(details) {
             const fb = document.getElementById('feedbackBox');
-            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200', 'bg-amber-950/90', 'border-amber-600', 'text-amber-200');
-            fb.classList.add('bg-amber-950/90', 'border', 'border-amber-600', 'text-amber-200');
+            fb.className = 'rounded-xl p-4 text-sm space-y-2 mt-4 bg-amber-950/90 border border-amber-600 text-amber-200';
             fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">Solución revelada:</p>${details}`;
-
+            fb.classList.remove('hidden');
             document.getElementById('nextBtn').classList.remove('hidden');
         }
 
         function showFeedback(type, details) {
             total++;
-            const isFullyCorrect = (type === 'green');
-            if (isFullyCorrect) { 
-                score++; 
-                streak++; 
-            } else { 
-                streak = 0; 
-            }
+            if (type === 'green') { score++; streak++; } else { streak = 0; }
 
             document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
             document.getElementById('streakDisplay').innerText = `🔥 ${streak}`;
 
             const fb = document.getElementById('feedbackBox');
-            fb.classList.remove('hidden', 'bg-emerald-950/90', 'border-emerald-600', 'text-emerald-200', 'bg-rose-950/90', 'border-rose-600', 'text-rose-200', 'bg-amber-950/90', 'border-amber-600', 'text-amber-200');
+            fb.className = 'rounded-xl p-4 text-sm space-y-2 mt-4 ';
 
             if (type === 'green') {
                 fb.classList.add('bg-emerald-950/90', 'border', 'border-emerald-600', 'text-emerald-200');
                 fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">¡Excelente! ✨</p>${details}`;
-            } else if (type === 'amber') {
-                fb.classList.add('bg-amber-950/90', 'border', 'border-amber-600', 'text-amber-200');
-                fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">¡A medias! Has acertado una de dos.</p>${details}`;
             } else {
                 fb.classList.add('bg-rose-950/90', 'border', 'border-rose-600', 'text-rose-200');
                 fb.innerHTML = `<p class="font-bold text-base flex items-center gap-2">¡Incorrecto!</p>${details}`;
             }
-
+            fb.classList.remove('hidden');
             document.getElementById('nextBtn').classList.remove('hidden');
         }
     </script>
